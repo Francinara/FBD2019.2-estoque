@@ -1,6 +1,8 @@
 package br.com.fbd.acad.app;
 
 public class App {
-	String teste;
+	public static void main(String[] args) {
+		System.out.println("Hello Mundo");
+	}
 
 }
