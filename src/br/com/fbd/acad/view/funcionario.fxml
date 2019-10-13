@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="680.0" prefWidth="1180.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <AnchorPane prefHeight="225.0" prefWidth="1200.0" style="-fx-background-color: #494e6b;">
+         <children>
+            <Button layoutX="45.0" layoutY="162.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" styleClass="botao_top" text="Cadastrar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="235.0" layoutY="162.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" styleClass="botao_top" text="Consultar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="420.0" layoutY="162.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" styleClass="botao_top" text="Atualizar" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="599.0" layoutY="162.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" styleClass="botao_top" text="excluir" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="45.0" layoutY="52.0" text="Funcionarios" textFill="WHITE">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="45.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerênciar funcionários">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" style="-fx-background-color: #494e6b;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="544.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/funcionario.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

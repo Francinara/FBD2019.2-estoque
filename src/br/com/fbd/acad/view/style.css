@@ -13,6 +13,12 @@ TextField{
 PasswordField{
 	-fx-background-radius:0;
 }
+.dash{
+	-fx-cursor: hand;
+}
 .dash:hover {
 	-fx-background-color:  #f3f3f3;
+}
+Button{
+	-fx-cursor: hand;
 }
