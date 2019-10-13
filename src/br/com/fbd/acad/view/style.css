@@ -1,0 +1,18 @@
+.botao_top {
+	-fx-background-color:  #494e6b;
+	-fx-border-color:#fff;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+}
+.botao_top:hover{
+	-fx-background-color:  #555a7c;
+}
+TextField{
+	-fx-background-radius:0;
+}
+PasswordField{
+	-fx-background-radius:0;
+}
+.dash:hover {
+	-fx-background-color:  #f3f3f3;
+}
