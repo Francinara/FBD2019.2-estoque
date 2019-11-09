@@ -2,23 +2,88 @@ package br.com.fbd.acad.entidade;
 
 import java.sql.Date;
 
-public class Funcionario extends Usuario {
+public class Funcionario {
 	
-	private Funcao funcao;
+	private Integer id;
+	private Integer id_cargo;
+	private String nome;
+	private String telefone;
+	private Date nascimento;
+	private String cpf;
+	private String senha;
 	
+	public Funcionario(Integer id, Integer id_cargo, String nome, String telefone, Date nascimento, String cpf,
+			String senha) {
+		super();
+		this.id = id;
+		this.id_cargo = id_cargo;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.nascimento = nascimento;
+		this.cpf = cpf;
+		this.senha = senha;
+	}
 	
-	public Funcionario(Integer id, String nome, String cpf, String re, Date dataNascimento, Contato contato,
-			Endereco endereco, Funcao funcao) {
-		super(id, nome, cpf, re, dataNascimento, contato, endereco);
-		this.funcao = funcao;
+	public Funcionario(Integer id_cargo, String nome, String telefone, Date nascimento, String cpf, String senha) {
+		super();
+		this.id_cargo = id_cargo;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.nascimento = nascimento;
+		this.cpf = cpf;
+		this.senha = senha;
 	}
 
-	public Funcao getFuncao() {
-		return funcao;
+	public Integer getId_cargo() {
+		return id_cargo;
 	}
 
-	public void setFuncao(Funcao funcao) {
-		this.funcao = funcao;
+	public void setId_cargo(Integer id_cargo) {
+		this.id_cargo = id_cargo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public Date getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 }

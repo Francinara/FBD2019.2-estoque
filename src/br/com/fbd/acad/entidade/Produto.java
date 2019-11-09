@@ -3,52 +3,37 @@ package br.com.fbd.acad.entidade;
 public class Produto {
 	
 	private Integer id;
-	private int codigo;
 	private String descricao;
-	private double valorCompra;
-	private double valorVenda;
-	private int estoqueAtual;
-	private String unidadeDeMedida;
-	private Fornecedor fornecedor;
-	private int ncm;
-	private double tributaçao;
+	private String codigo;
+	private Integer id_categoria;
+	private boolean preco;
+	private boolean custo;
+	private Integer id_fornecedor;
+	private int quantidade;
 	
-	public Produto(Integer id, int codigo, String descricao, double valorCompra, double valorVenda, int estoqueAtual,
-			String unidadeDeMedida, Fornecedor fornecedor, int ncm, double tributaçao) {
+	public Produto(Integer id, String descricao, String codigo, Integer id_categoria, boolean preco, boolean custo,
+			Integer id_fornecedor, int quantidade) {
 		super();
 		this.id = id;
-		this.codigo = codigo;
 		this.descricao = descricao;
-		this.valorCompra = valorCompra;
-		this.valorVenda = valorVenda;
-		this.estoqueAtual = estoqueAtual;
-		this.unidadeDeMedida = unidadeDeMedida;
-		this.fornecedor = fornecedor;
-		this.ncm = ncm;
-		this.tributaçao = tributaçao;
+		this.codigo = codigo;
+		this.id_categoria = id_categoria;
+		this.preco = preco;
+		this.custo = custo;
+		this.id_fornecedor = id_fornecedor;
+		this.quantidade = quantidade;
 	}
 
-	public Produto(Integer id, int codigo, String descricao) {
+	public Produto(String descricao, String codigo, Integer id_categoria, boolean preco, boolean custo,
+			Integer id_fornecedor, int quantidade) {
 		super();
-		this.id = id;
-		this.codigo = codigo;
 		this.descricao = descricao;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+		this.id_categoria = id_categoria;
+		this.preco = preco;
+		this.custo = custo;
+		this.id_fornecedor = id_fornecedor;
+		this.quantidade = quantidade;
 	}
 
 	public String getDescricao() {
@@ -59,60 +44,56 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public double getValorCompra() {
-		return valorCompra;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setValorCompra(double valorCompra) {
-		this.valorCompra = valorCompra;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public double getValorVenda() {
-		return valorVenda;
+	public Integer getId_categoria() {
+		return id_categoria;
 	}
 
-	public void setValorVenda(double valorVenda) {
-		this.valorVenda = valorVenda;
+	public void setId_categoria(Integer id_categoria) {
+		this.id_categoria = id_categoria;
 	}
 
-	public int getEstoqueAtual() {
-		return estoqueAtual;
+	public boolean isPreco() {
+		return preco;
 	}
 
-	public void setEstoqueAtual(int estoqueAtual) {
-		this.estoqueAtual = estoqueAtual;
+	public void setPreco(boolean preco) {
+		this.preco = preco;
 	}
 
-	public String getUnidadeDeMedida() {
-		return unidadeDeMedida;
+	public boolean isCusto() {
+		return custo;
 	}
 
-	public void setUnidadeDeMedida(String unidadeDeMedida) {
-		this.unidadeDeMedida = unidadeDeMedida;
+	public void setCusto(boolean custo) {
+		this.custo = custo;
 	}
 
-	public Fornecedor getFornecedor() {
-		return fornecedor;
+	public Integer getId_fornecedor() {
+		return id_fornecedor;
 	}
 
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setId_fornecedor(Integer id_fornecedor) {
+		this.id_fornecedor = id_fornecedor;
 	}
 
-	public int getNcm() {
-		return ncm;
+	public int getQuantidade() {
+		return quantidade;
 	}
 
-	public void setNcm(int ncm) {
-		this.ncm = ncm;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
-	public double getTributaçao() {
-		return tributaçao;
-	}
-
-	public void setTributaçao(double tributaçao) {
-		this.tributaçao = tributaçao;
+	public Integer getId() {
+		return id;
 	}
 
 }
