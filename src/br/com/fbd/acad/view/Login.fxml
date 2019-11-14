@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #192231;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #192231;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.LoginController">
    <children>
-      <ImageView fitHeight="699.0" fitWidth="1195.0" layoutX="-4.0" layoutY="-4.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="705.0" fitWidth="1209.0" layoutX="-4.0" layoutY="-4.0" opacity="0.89" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-29.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@images/wallpaper.png" />
          </image>
@@ -30,18 +30,18 @@
       <AnchorPane layoutX="714.0" layoutY="74.0" prefHeight="530.0" prefWidth="390.0" style="-fx-background-color: #494e6b;" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="74.0">
          <children>
             <Label layoutX="52.0" layoutY="154.0" text="Email" textFill="WHITE" />
-            <TextField layoutX="52.0" layoutY="171.0" prefHeight="46.0" prefWidth="286.0">
+            <TextField fx:id="emailField" layoutX="52.0" layoutY="171.0" prefHeight="46.0" prefWidth="286.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
             <Label layoutX="50.0" layoutY="227.0" text="Senha" textFill="WHITE" />
-            <PasswordField layoutX="52.0" layoutY="246.0" prefHeight="46.0" prefWidth="286.0">
+            <PasswordField fx:id="senhaField" layoutX="52.0" layoutY="246.0" prefHeight="46.0" prefWidth="286.0">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button layoutX="52.0" layoutY="416.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="286.0" styleClass="botao_top" text="Entrar" textFill="WHITE" AnchorPane.bottomAnchor="70.0">
+            <Button layoutX="52.0" layoutY="416.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="286.0" styleClass="botao_top" text="Entrar" textFill="WHITE" AnchorPane.bottomAnchor="70.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -51,6 +51,7 @@
                   <Font size="37.0" />
                </font>
             </Label>
+            <Label fx:id="confimLabel" alignment="CENTER" layoutX="52.0" layoutY="311.0" prefHeight="33.0" prefWidth="286.0" styleClass="label_confim" text="" textAlignment="CENTER" textFill="#6e0707" visible="false" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

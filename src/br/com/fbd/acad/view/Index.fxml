@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.IndexController">
+   <children>
+      <AnchorPane layoutX="269.0" prefHeight="691.0" prefWidth="926.0" style="-fx-background-color: #fff;">
+         <children>
+            <Pane fx:id="pane_vendas" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="pane_gastos" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="pane_relatorios" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="pane_painel" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="pane_funcionarios" layoutX="-15.0" prefHeight="691.0" prefWidth="942.0" style="-fx-background-color: #fff;">
+               <children>
+                  <AnchorPane fx:id="vazio_funcionarios_pane" layoutX="185.0" layoutY="129.0" prefHeight="422.0" prefWidth="525.0" style="-fx-background-color: #fff;" visible="false">
+                     <children>
+                        <Text layoutX="48.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guarde as informações dos seus funcionário">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="133.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="comece agora adicionado o primeiro funcionário" />
+                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="170.0" layoutY="228.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #494e6b;" text="Adicionar Funcionario" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="listar_funcionarios_pane" layoutX="14.0" layoutY="51.0" prefHeight="629.0" prefWidth="927.0">
+                     <children>
+                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="654.0" layoutY="42.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #494e6b;" text="Adicionar Funcionario" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <TableView layoutX="44.0" layoutY="110.0" prefHeight="477.0" prefWidth="795.0">
+                          <columns>
+                            <TableColumn prefWidth="193.0" text="NOME" />
+                            <TableColumn prefWidth="191.0" text="TELEFONE" />
+                              <TableColumn minWidth="9.0" prefWidth="242.0" text="E-MAIL" />
+                          </columns>
+                        </TableView>
+                        <Text layoutX="44.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="691.0" prefWidth="265.0" style="-fx-background-color: #fff;">
+         <children>
+            <AnchorPane prefHeight="680.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect></AnchorPane>
+            <JFXButton fx:id="btn_painel" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="92.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Painel">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/shop.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="btn_vendas" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="142.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Vendas">
+               <graphic>
+                  <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/venda.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btn_gastos" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="192.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Gastos">
+               <graphic>
+                  <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/fornecedor.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btn_funcionarios" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="242.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Funcionários">
+               <graphic>
+                  <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/funcionario.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton fx:id="btn_relatorios" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="292.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Relatórios">
+               <graphic>
+                  <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/relatorio.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+         </children>
+         <effect>
+            <DropShadow height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </AnchorPane>
+      <AnchorPane prefHeight="50.0" prefWidth="1197.0" style="-fx-background-color: #192231;" />
+   </children>
+</AnchorPane>
