@@ -1,5 +1,5 @@
 package br.com.fbd.acad.business;
 
-public class BusinessFuncao {
+public interface IBusinessGasto {
 
 }

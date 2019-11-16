@@ -11,9 +11,9 @@
 
 <AnchorPane prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #192231;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.LoginController">
    <children>
-      <ImageView fitHeight="705.0" fitWidth="1209.0" layoutX="-4.0" layoutY="-4.0" opacity="0.89" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-29.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="697.0" fitWidth="1380.0" layoutX="-4.0" layoutY="-4.0" opacity="0.89" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-200.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@images/wallpaper.png" />
+            <Image url="@images/background.jpg" />
          </image>
       </ImageView>
       <Label layoutX="75.0" layoutY="263.0" text="Bem-vindo." textFill="WHITE" AnchorPane.leftAnchor="74.0">
@@ -27,7 +27,8 @@
          </image>
       </ImageView>
       <Label layoutX="80.0" layoutY="591.0" text="FAMA Ltda." textFill="WHITE" AnchorPane.bottomAnchor="73.0" AnchorPane.leftAnchor="74.0" />
-      <AnchorPane layoutX="714.0" layoutY="74.0" prefHeight="530.0" prefWidth="390.0" style="-fx-background-color: #494e6b;" AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="74.0">
+      <AnchorPane layoutX="718.0" layoutY="79.0" prefHeight="530.0" prefWidth="390.0" style="-fx-background-color: #696762; -fx-opacity: 0.5;" />
+      <AnchorPane layoutX="717.0" layoutY="76.0" prefHeight="530.0" prefWidth="390.0" AnchorPane.bottomAnchor="71.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="76.0">
          <children>
             <Label layoutX="52.0" layoutY="154.0" text="Email" textFill="WHITE" />
             <TextField fx:id="emailField" layoutX="52.0" layoutY="171.0" prefHeight="46.0" prefWidth="286.0">
@@ -41,7 +42,7 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button layoutX="52.0" layoutY="416.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="286.0" styleClass="botao_top" text="Entrar" textFill="WHITE" AnchorPane.bottomAnchor="70.0">
+            <Button layoutX="52.0" layoutY="416.0" mnemonicParsing="false" onAction="#buttonHandler" prefHeight="46.0" prefWidth="286.0" style="-fx-background-color: transparent;" styleClass="botao_top" text="Entrar" textFill="WHITE" AnchorPane.bottomAnchor="70.0">
                <font>
                   <Font size="20.0" />
                </font>

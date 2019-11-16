@@ -1,5 +1,10 @@
 package br.com.fbd.acad.business;
 
-public interface IBusinessFuncionario {
+import br.com.fbd.acad.entidade.Funcionario;
 
+public interface IBusinessFuncionario {
+	
+	public boolean cadastrar(Funcionario funcionario);
+	public boolean validarLogin(String email, String senha);
+	
 }

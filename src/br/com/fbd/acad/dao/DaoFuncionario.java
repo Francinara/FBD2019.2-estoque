@@ -19,6 +19,8 @@ public class DaoFuncionario implements IDaoFuncionario {
 	
 	Calendar calendar = Calendar.getInstance();
 	
+	private Funcionario funcionario;
+	
 	public boolean cadastrar(Funcionario funcionario) {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
@@ -200,6 +202,34 @@ public class DaoFuncionario implements IDaoFuncionario {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+	@Override
+	public Funcionario verificarCargo(String email) {
+		try {
+			conexao = SQLConnection.getConnectionInstance();
+			statement = conexao.prepareStatement(SQLUtil.Funcionario.SELECT_EMAIL);
+			
+			statement.setString(1, email);
+			
+			result = statement.executeQuery();
+			
+			if(result.next()) {
+				this.funcionario = new Funcionario(result.getInt("id"), result.getInt("id_cargo"), 
+						result.getString("nome"), result.getString("email"), result.getString("telefone"), 
+						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"));
+			}
+			
+			statement.close();
+			conexao.close();
+			result.close();
+			
+			return funcionario;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return funcionario;
 	}
 
 }

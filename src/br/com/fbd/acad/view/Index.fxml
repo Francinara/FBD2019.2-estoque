@@ -2,8 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,25 +11,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.IndexController">
+<AnchorPane maxHeight="680.0" maxWidth="1204.0" minHeight="680.0" minWidth="1180.0" prefHeight="680.0" prefWidth="1204.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.IndexController">
    <children>
-      <AnchorPane layoutX="269.0" prefHeight="691.0" prefWidth="926.0" style="-fx-background-color: #fff;">
+      <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="941.0" style="-fx-background-color: #fff;">
          <children>
-            <Pane fx:id="pane_vendas" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
-            <Pane fx:id="pane_gastos" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
-            <Pane fx:id="pane_relatorios" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
-            <Pane fx:id="pane_painel" layoutX="-14.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" />
-            <Pane fx:id="pane_funcionarios" layoutX="-15.0" prefHeight="691.0" prefWidth="942.0" style="-fx-background-color: #fff;">
+            <Pane fx:id="pane_funcionarios" layoutX="-15.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;">
                <children>
-                  <AnchorPane fx:id="vazio_funcionarios_pane" layoutX="185.0" layoutY="129.0" prefHeight="422.0" prefWidth="525.0" style="-fx-background-color: #fff;" visible="false">
+                  <AnchorPane fx:id="vazio_funcionarios_pane" layoutX="16.0" layoutY="50.0" prefHeight="629.0" prefWidth="927.0" style="-fx-background-color: #fff;">
                      <children>
-                        <Text layoutX="48.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guarde as informações dos seus funcionário">
+                        <Text layoutX="249.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guarde as informações dos seus funcionário">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text layoutX="133.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="comece agora adicionado o primeiro funcionário" />
-                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="170.0" layoutY="228.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #494e6b;" text="Adicionar Funcionario" textFill="WHITE">
+                        <Text layoutX="334.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="comece agora adicionado o primeiro funcionário" />
+                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="371.0" layoutY="348.0" onAction="#cadastrar_funcionarios" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00c569;" text="Adicionar Funcionario" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -38,38 +33,14 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </JFXButton>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="listar_funcionarios_pane" layoutX="14.0" layoutY="51.0" prefHeight="629.0" prefWidth="927.0">
-                     <children>
-                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="654.0" layoutY="42.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #494e6b;" text="Adicionar Funcionario" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </JFXButton>
-                        <TableView layoutX="44.0" layoutY="110.0" prefHeight="477.0" prefWidth="795.0">
-                          <columns>
-                            <TableColumn prefWidth="193.0" text="NOME" />
-                            <TableColumn prefWidth="191.0" text="TELEFONE" />
-                              <TableColumn minWidth="9.0" prefWidth="242.0" text="E-MAIL" />
-                          </columns>
-                        </TableView>
-                        <Text layoutX="44.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionários">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Text>
                      </children>
                   </AnchorPane>
                </children>
             </Pane>
          </children></AnchorPane>
-      <AnchorPane prefHeight="691.0" prefWidth="265.0" style="-fx-background-color: #fff;">
+      <AnchorPane prefHeight="691.0" prefWidth="270.0" style="-fx-background-color: #fff;">
          <children>
-            <AnchorPane prefHeight="680.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="691.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect></AnchorPane>
@@ -129,11 +100,30 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
+            <Label fx:id="atualLabel" layoutX="73.0" layoutY="62.0" prefHeight="29.0" prefWidth="103.0" text="Label" />
          </children>
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
       </AnchorPane>
-      <AnchorPane prefHeight="50.0" prefWidth="1197.0" style="-fx-background-color: #192231;" />
+      <AnchorPane prefHeight="50.0" prefWidth="1213.0" style="-fx-background-color: #030303;">
+         <children>
+            <ImageView fx:id="plusButton" fitWidth="25.0" layoutX="1134.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/plus.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="enableButton" fitWidth="25.0" layoutX="1172.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/enable.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

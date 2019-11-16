@@ -11,6 +11,7 @@ public interface IDaoFuncionario {
 	public boolean validarLogin(String email, String senha);
 	public boolean validarEmail(String email);
 	public boolean validarCpf(String cpf);
+	public Funcionario verificarCargo(String email);
 	public boolean isEmpty();
 	public List<Funcionario> getList();
 

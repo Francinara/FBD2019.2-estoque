@@ -1,5 +1,32 @@
 package br.com.fbd.acad.business;
 
-public class BusinessFuncionario {
+import br.com.fbd.acad.dao.DaoFuncionario;
+import br.com.fbd.acad.dao.IDaoFuncionario;
+import br.com.fbd.acad.entidade.Funcionario;
+
+public class BusinessFuncionario implements IBusinessFuncionario{
+
+	private IDaoFuncionario daoFuncionario;
+	
+	public BusinessFuncionario() {
+		daoFuncionario = new DaoFuncionario();
+	}
+	
+	@Override
+	public boolean cadastrar(Funcionario funcionario) {
+		if(daoFuncionario.cadastrar(funcionario)) {
+			return true;
+		}else return false;
+	}
+	
+	@Override
+	public boolean validarLogin(String email, String senha) {
+		if(daoFuncionario.validarLogin(email, senha)) {
+			return true;
+		}
+		return false;
+	}
+
+	
 
 }

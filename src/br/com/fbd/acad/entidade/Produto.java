@@ -6,12 +6,12 @@ public class Produto {
 	private String descricao;
 	private String codigo;
 	private Integer id_categoria;
-	private boolean preco;
-	private boolean custo;
+	private double preco;
+	private double custo;
 	private Integer id_fornecedor;
 	private int quantidade;
 	
-	public Produto(Integer id, String descricao, String codigo, Integer id_categoria, boolean preco, boolean custo,
+	public Produto(Integer id, String descricao, String codigo, Integer id_categoria, double preco, double custo,
 			Integer id_fornecedor, int quantidade) {
 		super();
 		this.id = id;
@@ -24,7 +24,7 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
-	public Produto(String descricao, String codigo, Integer id_categoria, boolean preco, boolean custo,
+	public Produto(String descricao, String codigo, Integer id_categoria, double preco, double custo,
 			Integer id_fornecedor, int quantidade) {
 		super();
 		this.descricao = descricao;
@@ -60,19 +60,19 @@ public class Produto {
 		this.id_categoria = id_categoria;
 	}
 
-	public boolean isPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(boolean preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
-	public boolean isCusto() {
+	public double getCusto() {
 		return custo;
 	}
 
-	public void setCusto(boolean custo) {
+	public void setCusto(double custo) {
 		this.custo = custo;
 	}
 

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import br.com.fbd.acad.app.App;
 import br.com.fbd.acad.dao.DaoFuncionario;
 import br.com.fbd.acad.dao.IDaoFuncionario;
+import br.com.fbd.acad.entidade.Funcionario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +39,6 @@ public class LoginController implements Initializable{
 			}
 		});
 	}
-	
 	public void buttonHandler(ActionEvent event) {
 		logar();
 	}
@@ -62,6 +62,12 @@ public class LoginController implements Initializable{
 			confimLabel.setText("Informações incorretas");
 			confimLabel.setVisible(true);
 		}
+	}
+	
+	public Funcionario verificarAcessor() {
+		
+		return null;
+		
 	}
 
 }

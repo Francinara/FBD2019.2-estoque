@@ -6,5 +6,6 @@ public interface IDaoEmpresa {
 	
 	public boolean cadastrar(Empresa empresa );
 	public boolean editar(Empresa empresa);
+	public boolean isEmpty();
 
 }

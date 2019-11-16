@@ -7,27 +7,30 @@ public class Funcionario {
 	private Integer id;
 	private Integer id_cargo;
 	private String nome;
+	private String email;
 	private String telefone;
 	private Date nascimento;
 	private String cpf;
 	private String senha;
 	
-	public Funcionario(Integer id, Integer id_cargo, String nome, String telefone, Date nascimento, String cpf,
+	public Funcionario(Integer id, Integer id_cargo, String nome, String email, String telefone, Date nascimento, String cpf,
 			String senha) {
 		super();
 		this.id = id;
 		this.id_cargo = id_cargo;
 		this.nome = nome;
+		this.setEmail(email);
 		this.telefone = telefone;
 		this.nascimento = nascimento;
 		this.cpf = cpf;
 		this.senha = senha;
 	}
 	
-	public Funcionario(Integer id_cargo, String nome, String telefone, Date nascimento, String cpf, String senha) {
+	public Funcionario(Integer id_cargo, String nome, String email, String telefone, Date nascimento, String cpf, String senha) {
 		super();
 		this.id_cargo = id_cargo;
 		this.nome = nome;
+		this.setEmail(email);
 		this.telefone = telefone;
 		this.nascimento = nascimento;
 		this.cpf = cpf;
@@ -48,6 +51,14 @@ public class Funcionario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getTelefone() {
