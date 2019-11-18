@@ -26,6 +26,12 @@ public class BusinessFuncionario implements IBusinessFuncionario{
 		}
 		return false;
 	}
+	
+	public boolean verificarAcesso(int cargo) {
+		if(cargo == 1 || cargo == 0){
+			return true;
+		}return false;
+	}
 
 	
 

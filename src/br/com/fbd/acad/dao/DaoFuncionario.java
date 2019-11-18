@@ -136,10 +136,12 @@ public class DaoFuncionario implements IDaoFuncionario {
 			result = statement.executeQuery();
 			
 			while(result.next()) {
+				if(result.getInt("id")!=0) {
 				Funcionario funcionario = new Funcionario(result.getInt("id"), result.getInt("id_cargo"), 
 						result.getString("nome"), result.getString("email"), result.getString("telefone"), 
 						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"));
-				funcionarios.add(funcionario);	
+				funcionarios.add(funcionario);
+				}
 			}
 			statement.close();
 			conexao.close();
@@ -219,7 +221,6 @@ public class DaoFuncionario implements IDaoFuncionario {
 						result.getString("nome"), result.getString("email"), result.getString("telefone"), 
 						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"));
 			}
-			
 			statement.close();
 			conexao.close();
 			result.close();

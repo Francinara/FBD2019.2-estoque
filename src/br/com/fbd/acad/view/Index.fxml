@@ -2,30 +2,39 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="680.0" maxWidth="1204.0" minHeight="680.0" minWidth="1180.0" prefHeight="680.0" prefWidth="1204.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.IndexController">
+<AnchorPane maxHeight="680.0" maxWidth="1180.0" minHeight="680.0" minWidth="1180.0" prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #fff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.IndexController">
    <children>
-      <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="941.0" style="-fx-background-color: #fff;">
+      <AnchorPane layoutX="269.0" prefHeight="680.0" prefWidth="941.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Pane fx:id="pane_funcionarios" layoutX="-15.0" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;">
+            <Pane fx:id="relatorioPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane fx:id="vazio_funcionarios_pane" layoutX="16.0" layoutY="50.0" prefHeight="629.0" prefWidth="927.0" style="-fx-background-color: #fff;">
+                  <Label layoutX="126.0" layoutY="169.0" text="Relatório">
+                     <font>
+                        <Font size="77.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="funcionarioPane" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="630.0" prefWidth="910.0" style="-fx-background-color: #fff;">
                      <children>
-                        <Text layoutX="249.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guarde as informações dos seus funcionário">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="334.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="comece agora adicionado o primeiro funcionário" />
-                        <JFXButton fx:id="funcionario_cadastrar_btn" layoutX="371.0" layoutY="348.0" onAction="#cadastrar_funcionarios" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00c569;" text="Adicionar Funcionario" textFill="WHITE">
+                        <JFXButton layoutX="701.0" layoutY="33.0" onAction="#cadastrarFuncionarios" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00c569;" text="Adicionar Funcionario" textFill="WHITE" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -33,18 +42,233 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </JFXButton>
+                        <TableView fx:id="funcionarioTable" layoutX="53.0" layoutY="91.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="90.0">
+                          <columns>
+                            <TableColumn fx:id="idFuncionarioClm" prefWidth="102.0" text="ID" />
+                            <TableColumn fx:id="nomeFuncionarioClm" prefWidth="286.0" text="NOME" />
+                              <TableColumn fx:id="emailFuncionarioClm" prefWidth="268.0" text="EMAIL" />
+                              <TableColumn fx:id="telefoneFuncionarioClm" prefWidth="196.0" text="TELEFONE" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
+                  <Label layoutX="24.0" layoutY="21.0" prefHeight="36.0" prefWidth="178.0" text="Funcionários">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="gastosPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TabPane prefHeight="630.0" prefWidth="926.0" style="-fx-tab-min-height: 50px; -fx-tab-min-width: 0.5em;" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab text="Gastos">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton onAction="#cadastrarGastos" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00c569;" text="Nova entrada de estoque" textFill="WHITE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="25.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TableView fx:id="gastoTable" layoutX="44.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="90.0">
+                                       <columns>
+                                          <TableColumn fx:id="idGastoClm" prefWidth="102.0" text="ID" />
+                                          <TableColumn fx:id="dataGastoClm" prefWidth="163.0" text="DATA" />
+                                          <TableColumn fx:id="fornecedorGastoClm" prefWidth="243.0" text="FORNECEDOR" />
+                                          <TableColumn fx:id="precoGastoClm" prefWidth="142.0" text="PREÇO" />
+                                          <TableColumn fx:id="funcionarioGastoClm" prefWidth="229.0" text="FUNCIONARIO" />
+                                       </columns>
+                                    </TableView>
+                                    <Label prefHeight="29.0" prefWidth="93.0" text="Gastos" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Fornecedoes">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="601.0" prefWidth="901.0">
+                                 <children>
+                                    <JFXButton onAction="#cadastrarFornecedores" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00c569;" text="Cadastrar Fornecedores" textFill="WHITE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="25.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TableView fx:id="fornecedorTable" layoutX="110.0" layoutY="148.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="90.0">
+                                       <columns>
+                                          <TableColumn fx:id="idFornecdorClm" prefWidth="102.0" text="ID" />
+                                          <TableColumn fx:id="empresaFornecdorClm" prefWidth="168.0" text="EMPRESA" />
+                                          <TableColumn fx:id="representanteFornecdorClm" prefWidth="210.0" text="REPRESENTANTE" />
+                                          <TableColumn fx:id="emailFornecdorClm" prefWidth="220.0" text="EMAIL" />
+                                          <TableColumn fx:id="telefoneFornecdorClm" prefWidth="180.0" text="TELEFONE" />
+                                       </columns>
+                                    </TableView>
+                                    <Label prefHeight="36.0" prefWidth="162.0" text="Fornecedores" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+            </Pane>
+            <Pane fx:id="vendasPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TabPane prefHeight="630.0" prefWidth="926.0" style="-fx-tab-min-height: 50px; -fx-tab-min-width: 0.5em;" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Todas as vendas">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton layoutX="400.0" layoutY="84.0" maxHeight="40.0" minHeight="40.0" onAction="#cadastrarVenda" prefHeight="40.0" prefWidth="168.0" style="-fx-background-color: #00c569;" text="Nova Venda" textFill="WHITE" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="25.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TableView fx:id="vendaTable" layoutX="25.0" layoutY="124.0" prefHeight="200.0" prefWidth="860.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="90.0">
+                                       <columns>
+                                          <TableColumn fx:id="idVendaClm" prefWidth="102.0" text="ID" />
+                                          <TableColumn fx:id="dataVendaClm" minWidth="0.0" prefWidth="127.0" text="DATA" />
+                                          <TableColumn fx:id="clienteVendaClm" minWidth="0.0" prefWidth="279.0" text="CLIENTE" />
+                                          <TableColumn fx:id="precoVendaClm" minWidth="2.0" prefWidth="96.0" text="PREÇO" />
+                                          <TableColumn fx:id="funcionarioVendaClm" prefWidth="259.0" text="FUNCIONÀRIO" />
+                                       </columns>
+                                    </TableView>
+                                    <Label prefHeight="29.0" prefWidth="93.0" text="Vendas" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Clientes">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="573.0" prefWidth="920.0">
+                                 <children>
+                                    <JFXButton onAction="#cadastrarCliente" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #00c569;" text="Novo Cliente" textFill="WHITE" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="25.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TableView fx:id="clienteTable" layoutY="104.0" prefHeight="442.0" prefWidth="860.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="90.0">
+                                       <columns>
+                                          <TableColumn fx:id="idClienteClm" prefWidth="102.0" text="ID" />
+                                          <TableColumn fx:id="nomeClienteClm" prefWidth="283.0" text="NOME" />
+                                          <TableColumn fx:id="emailClienteClm" prefWidth="293.0" text="EMAIL" />
+                                          <TableColumn fx:id="telefoneClienteClm" minWidth="0.0" prefWidth="181.0" text="TELEFONE" />
+                                       </columns>
+                                    </TableView>
+                                    <Label layoutX="25.0" layoutY="37.0" prefHeight="29.0" prefWidth="93.0" text="Clientes" AnchorPane.bottomAnchor="519.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Produtos">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXButton onAction="#cadastrarProduto" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #00c569;" text="Novo produto" textFill="WHITE" AnchorPane.leftAnchor="735.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="25.0">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <TableView fx:id="produtoTable" layoutX="33.0" layoutY="114.0" prefHeight="200.0" prefWidth="860.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="90.0">
+                                       <columns>
+                                          <TableColumn fx:id="idProdutoClm" prefWidth="102.0" text="ID" />
+                                          <TableColumn fx:id="nomeProdutoClm" prefWidth="269.0" text="NOME" />
+                                          <TableColumn fx:id="categoriaProdutoClm" prefWidth="146.0" text="CATEGORIA" />
+                                          <TableColumn fx:id="precoProdutoClm" prefWidth="139.0" text="PREÇO DE VENDA" />
+                                          <TableColumn fx:id="custoProdutoClm" prefWidth="87.0" text="CUSTO" />
+                                          <TableColumn fx:id="qtdProdutoClm" prefWidth="142.0" text="QTD. EM ESTOQUE" />
+                                       </columns>
+                                    </TableView>
+                                    <Label prefHeight="36.0" prefWidth="114.0" text="Produtos" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </Pane>
+            <Pane fx:id="painelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="30.0" layoutY="29.0" text="Nome Da empresa">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="33.0" layoutY="117.0" prefHeight="195.0" prefWidth="832.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <LineChart layoutY="14.0" prefHeight="183.0" prefWidth="814.0" title="Vendas">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                     <effect>
+                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+                  <Pane layoutX="33.0" layoutY="366.0" prefHeight="195.0" prefWidth="381.0" style="-fx-background-color: #fff;">
+                     <effect>
+                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+                  <Pane layoutX="484.0" layoutY="366.0" prefHeight="195.0" prefWidth="381.0" style="-fx-background-color: #fff;">
+                     <effect>
+                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
                </children>
             </Pane>
          </children></AnchorPane>
-      <AnchorPane prefHeight="691.0" prefWidth="270.0" style="-fx-background-color: #fff;">
+      <AnchorPane prefHeight="691.0" prefWidth="270.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
             <AnchorPane prefHeight="691.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <effect>
                   <DropShadow height="10.0" radius="4.5" width="10.0" />
                </effect></AnchorPane>
-            <JFXButton fx:id="btn_painel" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="92.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Painel">
+            <Label fx:id="atualLabel" layoutX="73.0" layoutY="22.0" prefHeight="29.0" prefWidth="184.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <JFXButton fx:id="painelButton" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="52.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Painel">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -55,7 +279,7 @@
                      </image>
                   </ImageView>
                </graphic></JFXButton>
-            <JFXButton fx:id="btn_vendas" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="142.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Vendas">
+            <JFXButton fx:id="vendasButton" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="102.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Vendas">
                <graphic>
                   <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,7 +290,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="btn_gastos" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="192.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Gastos">
+            <JFXButton fx:id="gastosButton" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="152.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Gastos">
                <graphic>
                   <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -78,7 +302,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton fx:id="btn_funcionarios" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="242.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Funcionários">
+            <JFXButton fx:id="funcionariosButton" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="202.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Funcionários">
                <graphic>
                   <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +313,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <JFXButton fx:id="btn_relatorios" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="292.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Relatórios">
+            <JFXButton fx:id="relatoriosButton" alignment="BASELINE_LEFT" graphicTextGap="35.0" layoutY="252.0" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="270.0" text="Relatórios">
                <graphic>
                   <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -100,30 +324,73 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <Label fx:id="atualLabel" layoutX="73.0" layoutY="62.0" prefHeight="29.0" prefWidth="103.0" text="Label" />
          </children>
          <effect>
             <DropShadow height="10.0" radius="4.5" width="10.0" />
          </effect>
       </AnchorPane>
-      <AnchorPane prefHeight="50.0" prefWidth="1213.0" style="-fx-background-color: #030303;">
+      <AnchorPane prefHeight="50.0" prefWidth="1213.0" style="-fx-background-color: #030303;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="plusButton" fitWidth="25.0" layoutX="1134.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/plus.png" />
-               </image>
+            <JFXButton layoutX="1068.0" layoutY="3.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" onAction="#cadastrarGastos" prefHeight="40.0" prefWidth="40.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/entrada.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
-            <ImageView fx:id="enableButton" fitWidth="25.0" layoutX="1172.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/enable.png" />
-               </image>
+            </JFXButton>
+            <JFXButton fx:id="closeButton" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <ImageView fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/close_verde.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </ImageView>
+            </JFXButton>
+            <JFXButton fx:id="enableButton" layoutX="673.0" layoutY="5.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/enable.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton layoutX="1078.0" layoutY="13.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" onAction="#cadastrarVenda" prefHeight="40.0" prefWidth="40.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="5.0">
+               <graphic>
+                  <ImageView fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/vender.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children></AnchorPane>
    </children>
 </AnchorPane>
