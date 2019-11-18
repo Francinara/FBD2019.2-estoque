@@ -5,5 +5,6 @@ import br.com.fbd.acad.entidade.Cargo;
 public interface IBusinessCargo {
 	
 	public boolean cadastrar(Cargo cargo);
+	public boolean editar(Cargo cargo);
 
 }

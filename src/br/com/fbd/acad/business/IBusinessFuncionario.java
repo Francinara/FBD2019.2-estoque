@@ -6,5 +6,6 @@ public interface IBusinessFuncionario {
 	
 	public boolean cadastrar(Funcionario funcionario);
 	public boolean validarLogin(String email, String senha);
+	public boolean verificarAcesso(int cargo);
 	
 }
