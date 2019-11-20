@@ -19,6 +19,8 @@ import br.com.fbd.acad.entidade.Funcionario;
 import br.com.fbd.acad.entidade.Gasto;
 import br.com.fbd.acad.entidade.Produto;
 import br.com.fbd.acad.entidade.Venda;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,6 +67,9 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Cliente, String> nomeClienteClm;
 	@FXML private TableColumn<Cliente, String> emailClienteClm;
 	@FXML private TableColumn<Cliente, String> telefoneClienteClm;
+	
+	@FXML private JFXButton editarClienteButton;
+    @FXML private JFXButton excluirClienteButton;
 
 	@FXML private TableView<Produto> produtoTable;
 	@FXML private TableColumn<Produto, Integer> idProdutoClm;
@@ -73,6 +78,9 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Produto, Double> precoProdutoClm;
 	@FXML private TableColumn<Produto, Double> custoProdutoClm;
 	@FXML private TableColumn<Produto, Integer> qtdProdutoClm;
+	
+	@FXML private JFXButton editarProdutoButton;
+    @FXML private JFXButton excluirProdutoButton;
 
 	@FXML private TableView<Gasto> gastoTable;
 	@FXML private TableColumn<Gasto, Integer> idGastoClm;
@@ -87,12 +95,20 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Fornecedor, String> representanteFornecdorClm;
 	@FXML private TableColumn<Fornecedor, String> emailFornecdorClm;
 	@FXML private TableColumn<Fornecedor, String> telefoneFornecdorClm;
+	
+	@FXML private JFXButton editarFornecedorButton;
+	@FXML private JFXButton excluirFornecedorButton;
 
 	@FXML private TableView<Funcionario> funcionarioTable;
 	@FXML private TableColumn<Funcionario, Integer> idFuncionarioClm;
 	@FXML private TableColumn<Funcionario, String> nomeFuncionarioClm;
 	@FXML private TableColumn<Funcionario, String> emailFuncionarioClm;
 	@FXML private TableColumn<Funcionario, String> telefoneFuncionarioClm;
+	
+	@FXML private JFXButton editarFuncionarioButton;
+    @FXML private JFXButton excluirFuncionarioButton;
+	
+	private Funcionario selecionado;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -111,12 +127,28 @@ public class IndexController implements Initializable{
 			System.exit(0);
 		});
 		enableButton.setOnMouseClicked((MouseEvent event)->{
-			App.changeScreen("login");
+			App.getStage().close();
+			try {
+				new App().start(new Stage());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		});
 		
 		initTableClientes();
 		initTableFuncionarios();
 		initTableFornecedores();
+		
+		funcionarioTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+				excluirFuncionarioButton.setVisible(true);
+				editarFuncionarioButton.setVisible(true);
+				selecionado = (Funcionario)newValue;
+			}
+		});
 
 	}
 
@@ -137,7 +169,7 @@ public class IndexController implements Initializable{
 			relatorioPane.toFront();
 		}
 	}
-
+	@FXML
 	public void cadastrarFuncionarios(ActionEvent event) {
 		try {
 			new CadastrarFuncionarioController().start(new Stage());
@@ -146,16 +178,56 @@ public class IndexController implements Initializable{
 		}
 
 	}
+	
+	@FXML
+    void editarFuncionario(ActionEvent event) {
+
+    }
+
+    @FXML
+    void excluirFuncionario(ActionEvent event) {
+    	if(selecionado != null) {
+    		businessFuncionario.excluir(selecionado.getId());
+    		funcionarioTable.setItems(updateTableFuncionario());
+    	}
+    }
 
 	@FXML
 	void cadastrarCliente(ActionEvent event) {
-
+		try {
+			new CadastrarClienteController().start(new Stage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
+	@FXML
+    void editarCliente(ActionEvent event) {
+    }
+
+    @FXML
+    void excluirCliente(ActionEvent event) {
+
+    }
 
 	@FXML
 	void cadastrarProduto(ActionEvent event) {
-
+		try {
+			new CadastrarProdutoController().start(new Stage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
+	@FXML
+    void editarProduto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void excluirProduto(ActionEvent event) {
+
+    }
 
 	@FXML
 	void cadastrarVenda(ActionEvent event) {
@@ -163,8 +235,22 @@ public class IndexController implements Initializable{
 	}
 	@FXML
 	void cadastrarFornecedores(ActionEvent event) {
-
+		try {
+			new CadastrarFornecedorController().start(new Stage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
+	@FXML
+    void editarFornecedor(ActionEvent event) {
+
+    }
+
+    @FXML
+    void excluirFornecedor(ActionEvent event) {
+
+    }
 
 	@FXML
 	void cadastrarGastos(ActionEvent event) {
@@ -173,12 +259,10 @@ public class IndexController implements Initializable{
 
 	private void verificarAcesso(int Cargo) {
 		if(businessFuncionario.verificarAcesso(funcionario.getId_cargo())) {
-			painelPane.toFront();
 			funcionariosButton.setVisible(true);
 			relatoriosButton.setVisible(true);
 			//						}
 		}else {
-			painelPane.toFront();
 			funcionariosButton.setVisible(false);
 			relatoriosButton.setVisible(false);
 		}

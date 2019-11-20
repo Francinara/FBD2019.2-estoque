@@ -72,7 +72,25 @@ public class DaoFuncionario implements IDaoFuncionario {
 		}
 		return true;
 	}
-
+	
+	@Override
+	public boolean excluir(int id) {
+		try {
+			conexao = SQLConnection.getConnectionInstance();
+			statement = conexao.prepareStatement(SQLUtil.Funcionario.UPDATE_ATIVO);
+			
+			statement.setInt(1, id);
+			
+			statement.execute();
+			
+			conexao.close();
+			statement.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
 	
 	@Override
 	public boolean validarLogin(String email, String senha) {
@@ -136,10 +154,11 @@ public class DaoFuncionario implements IDaoFuncionario {
 			result = statement.executeQuery();
 			
 			while(result.next()) {
-				if(result.getInt("id")!=0) {
+				if(result.getBoolean("ativo")) {
 				Funcionario funcionario = new Funcionario(result.getInt("id"), result.getInt("id_cargo"), 
 						result.getString("nome"), result.getString("email"), result.getString("telefone"), 
-						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"));
+						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"), 
+						result.getBoolean("ativo"));
 				funcionarios.add(funcionario);
 				}
 			}
@@ -207,7 +226,7 @@ public class DaoFuncionario implements IDaoFuncionario {
 	}
 
 	@Override
-	public Funcionario verificarCargo(String email) {
+	public Funcionario selecionarFuncionario(String email) {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Funcionario.SELECT_EMAIL);
@@ -219,7 +238,8 @@ public class DaoFuncionario implements IDaoFuncionario {
 			if(result.next()) {
 				this.funcionario = new Funcionario(result.getInt("id"), result.getInt("id_cargo"), 
 						result.getString("nome"), result.getString("email"), result.getString("telefone"), 
-						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"));
+						result.getDate("data_nascimento"), result.getString("cpf"), result.getString("senha"), 
+						result.getBoolean("ativo"));
 			}
 			statement.close();
 			conexao.close();

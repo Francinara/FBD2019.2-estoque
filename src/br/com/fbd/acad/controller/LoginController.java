@@ -66,7 +66,7 @@ public class LoginController implements Initializable{
 			confimLabel.setText("Preencha todos os campos");
 			confimLabel.setVisible(true);
 		}else if(daoFuncionario.validarLogin(emailField.getText(), senhaField.getText())) {
-			App.changeScreen(INDEX, daoFuncionario.verificarCargo(emailField.getText()));
+			App.changeScreen(INDEX, daoFuncionario.selecionarFuncionario(emailField.getText()));
 			emailField.setText("");
 			senhaField.setText("");
 		}else {

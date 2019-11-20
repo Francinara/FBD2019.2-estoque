@@ -12,13 +12,14 @@ import br.com.fbd.acad.business.IBusinessFuncionario;
 import br.com.fbd.acad.dao.DaoFuncionario;
 import br.com.fbd.acad.dao.IDaoFuncionario;
 import br.com.fbd.acad.entidade.Funcionario;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -28,11 +29,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class CadastrarFuncionarioController extends Application implements Initializable {
+public class CadastrarFuncionarioController implements Initializable {
 	
 	private static Stage stage;
 	
-    @FXML private ComboBox<?> cargoField;
+    @FXML private ComboBox<String> cargoField;
     @FXML private TextField nomeField;
     @FXML private TextField emailField;
     @FXML private TextField telefoneField;
@@ -54,17 +55,19 @@ public class CadastrarFuncionarioController extends Application implements Initi
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		cargoField.getItems().addAll("adicionar novo cargo","Gerente", "Vendedor");
 	}
 	
 	public void start(Stage stage) throws IOException {
 
 		Parent root = FXMLLoader.load(getClass().getResource("/br/com/fbd/acad/view/CadastrarFuncionarios.fxml"));
 		Scene scene = new Scene(root);
-		stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.UTILITY);
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
+		
 
 	}
 
@@ -76,15 +79,14 @@ public class CadastrarFuncionarioController extends Application implements Initi
 		CadastrarFuncionarioController.stage = stage;
 	}
     
-    @SuppressWarnings("unlikely-arg-type")
 	@FXML
     void buttonHandler(ActionEvent event) {
     	if(event.getSource() == cancelarButton) {
-    		getStage().close();
+    		CadastrarFuncionarioController.stage.close();
     	}if(event.getSource() == salvarButton){
     		if(nomeField.getText().equalsIgnoreCase("") || emailField.getText().equalsIgnoreCase("") 
-    				|| telefoneField.getText().equalsIgnoreCase("") || dataField.getValue().equals("")
-    				|| cpfField.getText().equalsIgnoreCase("") || senhaField.getText().equalsIgnoreCase("")) {
+    				|| telefoneField.getText().equalsIgnoreCase("") || cpfField.getText().equalsIgnoreCase("") 
+    				|| senhaField.getText().equalsIgnoreCase("")) {
     			alertLabel.setVisible(true);
     			alertLabel.setText("Os campos * são obrigatorios");
     		}else if(!daoFuncionario.validarCpf(cpfField.getText())) {
@@ -98,6 +100,9 @@ public class CadastrarFuncionarioController extends Application implements Initi
         		
         		businessFuncionario.cadastrar(new Funcionario(1, nomeField.getText(), 
         				emailField.getText(), telefoneField.getText(), date, cpfField.getText(), senhaField.getText()));
+        		Alert a = new Alert(AlertType.CONFIRMATION);
+        		a.setHeaderText("Funcionario Adicionado com sucesso");
+        		a.show();
         		getStage().close();
     		}
     	}

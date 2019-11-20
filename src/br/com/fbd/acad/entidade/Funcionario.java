@@ -12,25 +12,27 @@ public class Funcionario {
 	private Date nascimento;
 	private String cpf;
 	private String senha;
+	private boolean ativo;
 	
 	public Funcionario(Integer id, Integer id_cargo, String nome, String email, String telefone, Date nascimento, String cpf,
-			String senha) {
+			String senha, boolean ativo) {
 		super();
 		this.id = id;
 		this.id_cargo = id_cargo;
 		this.nome = nome;
-		this.setEmail(email);
+		this.email = email;
 		this.telefone = telefone;
 		this.nascimento = nascimento;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.ativo = ativo;
 	}
 	
 	public Funcionario(Integer id_cargo, String nome, String email, String telefone, Date nascimento, String cpf, String senha) {
 		super();
 		this.id_cargo = id_cargo;
 		this.nome = nome;
-		this.setEmail(email);
+		this.email = email;
 		this.telefone = telefone;
 		this.nascimento = nascimento;
 		this.cpf = cpf;
@@ -95,6 +97,14 @@ public class Funcionario {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }
