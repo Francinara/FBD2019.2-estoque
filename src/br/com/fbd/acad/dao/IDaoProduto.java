@@ -8,6 +8,7 @@ public interface IDaoProduto {
 	
 	public boolean cadastrar(Produto produto);
 	public boolean editar(Produto produto);
+	public boolean excluir(int id);
 	public boolean validarCodigo(String codigo);
 	public boolean isEmpty();
 	public List<Produto> getList();

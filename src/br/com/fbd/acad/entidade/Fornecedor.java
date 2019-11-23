@@ -8,8 +8,9 @@ public class Fornecedor{
 	private String telefone;
 	private String email;
 	private String cnpj;
+	private boolean ativo;
 	
-	public Fornecedor(Integer id, String empresa, String nome, String telefone, String email, String cnpj) {
+	public Fornecedor(Integer id, String empresa, String nome, String telefone, String email, String cnpj, boolean ativo) {
 		super();
 		this.id = id;
 		this.empresa = empresa;
@@ -17,6 +18,7 @@ public class Fornecedor{
 		this.telefone = telefone;
 		this.email = email;
 		this.cnpj = cnpj;
+		this.ativo = ativo;
 	}
 
 	public Fornecedor(String empresa, String nome, String telefone, String email, String cnpj) {
@@ -70,6 +72,14 @@ public class Fornecedor{
 
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 }

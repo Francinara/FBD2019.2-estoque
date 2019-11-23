@@ -31,12 +31,14 @@ public class SQLUtil {
 		private static String NOME_TABELA = "clientes";
 		private static String COL_NOME = "nome";
 		private static String COL_EMAIL = "email";
-		private static String COL_TELEFONE = "telefone"; 
+		private static String COL_TELEFONE = "telefone";
+		private static String COL_ATIVO = "ativo";
 		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_NOME +","+COL_EMAIL+","+COL_TELEFONE+") values (?,?,?)";
+		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_NOME +","+COL_EMAIL+","+COL_TELEFONE+","+COL_ATIVO+") values (?,?,?,true)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_NOME+"=?,"+COL_EMAIL+"=?,"+COL_TELEFONE+"=? WHERE id=?";
 		public static String SELECT_EMAIL = "SELECT * FROM "+NOME_TABELA+" WHERE "+COL_EMAIL+"=?";
+		public static String UPDATE_ATIVO = "UPDATE " +NOME_TABELA+" SET "+COL_ATIVO+"=false WHERE id=?";
 		
 	}
 	
@@ -57,12 +59,14 @@ public class SQLUtil {
 		private static String COL_TELEFONE = "telefone";
 		private static String COL_EMAIL = "email";
 		private static String COL_CNPJ = "cnpj";
+		private static String COL_ATIVO = "ativo";
 		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_EMPRESA +","+COL_NOME+","+COL_TELEFONE+","+COL_EMAIL+","+COL_CNPJ+") values (?,?,?,?,?)";
+		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_EMPRESA +","+COL_NOME+","+COL_TELEFONE+","+COL_EMAIL+","+COL_CNPJ+","+COL_ATIVO+") values (?,?,?,?,?,true)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_EMPRESA+"=?,"+COL_NOME+"=?,"+COL_TELEFONE+"=?,"+COL_EMAIL+"=?,"+COL_CNPJ+"=? WHERE id=?";
 		public static String SELECT_EMAIL = "SELECT * FROM "+NOME_TABELA+" WHERE "+COL_EMAIL+"=?";
 		public static String SELECT_CNPJ = "SELECT * FROM "+NOME_TABELA+" WHERE "+COL_CNPJ+"=?";
+		public static String UPDATE_ATIVO = "UPDATE " +NOME_TABELA+" SET "+COL_ATIVO+"=false WHERE id=?";
 		
 	}
 	
@@ -110,11 +114,13 @@ public class SQLUtil {
 		private static String COL_CUSTO = "custo";
 		private static String COL_FORNECEDOR = "fornecedor";
 		private static String COL_QUANTIDADE = "quantidade";
+		private static String COL_ATIVO = "ativo";
 		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_DESCRICAO +","+COL_CODIGO+","+COL_CATEGORIA+","+COL_PRECO+","+COL_CUSTO+","+COL_FORNECEDOR+","+COL_QUANTIDADE+") values (?,?,?,?,?,?,?)";
+		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_DESCRICAO +","+COL_CODIGO+","+COL_CATEGORIA+","+COL_PRECO+","+COL_CUSTO+","+COL_FORNECEDOR+","+COL_QUANTIDADE+","+COL_ATIVO+") values (?,?,?,?,?,?,?,true)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_DESCRICAO+"=?,"+COL_CODIGO+"=?,"+COL_CATEGORIA+"=?,"+COL_PRECO+"=?,"+COL_CUSTO+"=?,"+COL_FORNECEDOR+"=?,"+COL_QUANTIDADE+"=? WHERE id=?";
 		public static String SELECT_CODIGO = "SELECT * FROM "+NOME_TABELA+" WHERE "+COL_CODIGO+"=?";
+		public static String UPDATE_ATIVO = "UPDATE " +NOME_TABELA+" SET "+COL_ATIVO+"=false WHERE id=?";
 		
 	}
 	

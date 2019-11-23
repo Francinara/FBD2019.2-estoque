@@ -8,7 +8,11 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import br.com.fbd.acad.app.App;
+import br.com.fbd.acad.business.BusinessCliente;
+import br.com.fbd.acad.business.BusinessFornecedor;
 import br.com.fbd.acad.business.BusinessFuncionario;
+import br.com.fbd.acad.business.IBusinessCliente;
+import br.com.fbd.acad.business.IBusinessFornecedor;
 import br.com.fbd.acad.business.IBusinessFuncionario;
 import br.com.fbd.acad.dao.DaoCliente;
 import br.com.fbd.acad.dao.DaoFornecedor;
@@ -38,6 +42,8 @@ public class IndexController implements Initializable{
 
 	private Funcionario funcionario;
 	private IBusinessFuncionario businessFuncionario = new BusinessFuncionario();
+	private IBusinessCliente businessCliente = new BusinessCliente();
+	private IBusinessFornecedor businessFornecedor = new BusinessFornecedor();
 
 	@FXML private Pane relatorioPane;
 	@FXML private Pane funcionarioPane;
@@ -108,7 +114,9 @@ public class IndexController implements Initializable{
 	@FXML private JFXButton editarFuncionarioButton;
     @FXML private JFXButton excluirFuncionarioButton;
 	
-	private Funcionario selecionado;
+	private Funcionario funcionarioSelecionado;
+	private Cliente clienteSelecionado;
+	private Fornecedor fornecedorSelecionado;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -146,7 +154,26 @@ public class IndexController implements Initializable{
 			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 				excluirFuncionarioButton.setVisible(true);
 				editarFuncionarioButton.setVisible(true);
-				selecionado = (Funcionario)newValue;
+				funcionarioSelecionado = (Funcionario)newValue;
+			}
+		});
+		
+		clienteTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+				excluirClienteButton.setVisible(true);
+				editarClienteButton.setVisible(true);
+				clienteSelecionado = (Cliente)newValue;
+			}
+		});
+		fornecedorTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+				excluirFornecedorButton.setVisible(true);
+				editarFornecedorButton.setVisible(true);
+				fornecedorSelecionado = (Fornecedor)newValue;
 			}
 		});
 
@@ -186,9 +213,11 @@ public class IndexController implements Initializable{
 
     @FXML
     void excluirFuncionario(ActionEvent event) {
-    	if(selecionado != null) {
-    		businessFuncionario.excluir(selecionado.getId());
+    	if(funcionarioSelecionado != null) {
+    		businessFuncionario.excluir(funcionarioSelecionado.getId());
     		funcionarioTable.setItems(updateTableFuncionario());
+    		excluirFuncionarioButton.setVisible(false);
+			editarFuncionarioButton.setVisible(false);
     	}
     }
 
@@ -207,7 +236,12 @@ public class IndexController implements Initializable{
 
     @FXML
     void excluirCliente(ActionEvent event) {
-
+    	if(clienteSelecionado != null) {
+    		businessCliente.excluir(clienteSelecionado.getId());
+    		clienteTable.setItems(updateTableCliente());
+    		excluirClienteButton.setVisible(false);
+			editarClienteButton.setVisible(false);
+    	}
     }
 
 	@FXML
@@ -244,12 +278,17 @@ public class IndexController implements Initializable{
 	
 	@FXML
     void editarFornecedor(ActionEvent event) {
-
+		
     }
 
     @FXML
     void excluirFornecedor(ActionEvent event) {
-
+    	if(fornecedorSelecionado != null) {
+    		businessFornecedor.excluir(fornecedorSelecionado.getId());
+    		fornecedorTable.setItems(updateTableFornecedor());
+    		excluirFornecedorButton.setVisible(false);
+			editarFornecedorButton.setVisible(false);
+    	}
     }
 
 	@FXML

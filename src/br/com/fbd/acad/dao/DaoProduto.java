@@ -11,7 +11,7 @@ import br.com.fbd.acad.sql_util.SQLConnection;
 import br.com.fbd.acad.sql_util.SQLUtil;
 
 public class DaoProduto implements IDaoProduto {
-	
+
 	private Connection conexao;
 	private PreparedStatement statement;
 	private ResultSet result;
@@ -21,8 +21,8 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.INSERT_ALL);
-			
-			
+
+
 			statement.setString(1, produto.getDescricao());
 			statement.setString(2, produto.getCodigo());
 			statement.setInt(3, produto.getId_categoria());
@@ -30,12 +30,12 @@ public class DaoProduto implements IDaoProduto {
 			statement.setDouble(5, produto.getCusto());
 			statement.setInt(6, produto.getId_fornecedor());
 			statement.setInt(7, produto.getQuantidade());
-	
+
 			statement.execute();
-			
+
 			conexao.close();
 			statement.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,8 +47,8 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.UPDATE_ALL);
-			
-			
+
+
 			statement.setString(1, produto.getDescricao());
 			statement.setString(2, produto.getCodigo());
 			statement.setInt(3, produto.getId_categoria());
@@ -57,13 +57,31 @@ public class DaoProduto implements IDaoProduto {
 			statement.setInt(6, produto.getId_fornecedor());
 			statement.setInt(7, produto.getQuantidade());
 			statement.setInt(8, produto.getId());
-	
+
+			statement.execute();
+
+			conexao.close();
+			statement.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	@Override
+	public boolean excluir(int id) {
+		try {
+			conexao = SQLConnection.getConnectionInstance();
+			statement = conexao.prepareStatement(SQLUtil.Produto.UPDATE_ATIVO);
+			
+			statement.setInt(1, id);
+			
 			statement.execute();
 			
 			conexao.close();
 			statement.close();
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return true;
@@ -74,23 +92,23 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_CODIGO);
-			
-			
+
+
 			statement.setString(1, codigo);
-	
+
 			result = statement.executeQuery();
-			
+
 			if(result.next()) {
 				conexao.close();
 				statement.close();
 				result.close();
 				return false;
 			}
-			
+
 			conexao.close();
 			statement.close();
 			result.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,17 +120,17 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_ALL);
-	
+
 			result = statement.executeQuery();
-			
+
 			if(result.next()) {
 				conexao.close();
 				statement.close();
 				result.close();
 				return false;
 			}
-			
-			
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -125,20 +143,22 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_ALL);
-			
+
 			result = statement.executeQuery();
-			
+
 			while(result.next()) {
-				Produto produto = new Produto(result.getInt("id"), result.getString("descricao"), result.getString("codigo"),
-						result.getInt("id_categoria"), result.getDouble("preco"), result.getDouble("custo"), 
-						result.getInt("id_fornecedor"), result.getInt("quantidade"));
-				produtos.add(produto);
+				if(result.getBoolean("ativo")) {
+					Produto produto = new Produto(result.getInt("id"), result.getString("descricao"), result.getString("codigo"),
+							result.getInt("id_categoria"), result.getDouble("preco"), result.getDouble("custo"), 
+							result.getInt("id_fornecedor"), result.getInt("quantidade"), result.getBoolean("ativo"));
+					produtos.add(produto);
+				}
 			}
-			
+
 			conexao.close();
 			statement.close();
 			result.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

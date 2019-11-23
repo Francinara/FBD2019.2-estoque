@@ -14,6 +14,12 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
 	private static Stage stage;
+	
+	private static Scene loginScene;
+	private static Scene indexScene;
+	private static Scene vendaScene;
+	private static Scene compraScene;
+	
 	public static Stage getStage() {
 		return stage;
 	}
@@ -21,12 +27,6 @@ public class App extends Application {
 	public static void setStage(Stage stage) {
 		App.stage = stage;
 	}
-
-
-	private static Scene loginScene;
-	private static Scene indexScene;
-	private static Scene vendaScene;
-	private static Scene compraScene;
 
 
 	@Override

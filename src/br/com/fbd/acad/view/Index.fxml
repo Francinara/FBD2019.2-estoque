@@ -70,7 +70,7 @@
                   </AnchorPane>
                   <Label layoutX="24.0" layoutY="21.0" prefHeight="36.0" prefWidth="178.0" text="Funcionários">
                      <font>
-       admin                 <Font size="25.0" />
+                        <Font size="25.0" />
                      </font>
                   </Label>
                </children>

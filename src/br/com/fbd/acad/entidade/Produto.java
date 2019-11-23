@@ -10,9 +10,10 @@ public class Produto {
 	private double custo;
 	private Integer id_fornecedor;
 	private int quantidade;
+	private boolean ativo;
 	
 	public Produto(Integer id, String descricao, String codigo, Integer id_categoria, double preco, double custo,
-			Integer id_fornecedor, int quantidade) {
+			Integer id_fornecedor, int quantidade, boolean ativo) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -22,6 +23,7 @@ public class Produto {
 		this.custo = custo;
 		this.id_fornecedor = id_fornecedor;
 		this.quantidade = quantidade;
+		this.ativo = ativo;
 	}
 
 	public Produto(String descricao, String codigo, Integer id_categoria, double preco, double custo,
@@ -94,6 +96,14 @@ public class Produto {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

@@ -8,8 +8,9 @@ public interface IDaoFornecedor {
 	
 	public boolean cadastrar(Fornecedor fornecedor);
 	public boolean editar(Fornecedor fornecedor);
-	public boolean validar_email(String email);
-	public boolean validar_cnpj(String cnpj);
+	public boolean excluir(int id);
+	public boolean validarEmail(String email);
+	public boolean validarCnpj(String cnpj);
 	public List<Fornecedor> getList();
 
 }

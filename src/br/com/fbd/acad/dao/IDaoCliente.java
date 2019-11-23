@@ -8,6 +8,7 @@ public interface IDaoCliente {
 
 	public boolean cadastrar(Cliente cliente);
 	public boolean editar(Cliente cliente);
+	public boolean excluir(int id);
 	public boolean validarEmail(String email);
 	public boolean isEmpty();
 	public List<Cliente> getList();	

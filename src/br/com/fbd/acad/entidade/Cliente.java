@@ -6,13 +6,15 @@ public class Cliente{
 	private String nome;
 	private String email;
 	private String telefone;
+	private boolean ativo;
 	
-	public Cliente(Integer id, String nome, String email, String telefone) {
+	public Cliente(Integer id, String nome, String email, String telefone, boolean ativo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
+		this.ativo = ativo;
 	}
 
 	public Cliente(String nome, String email, String telefone) {
@@ -48,6 +50,14 @@ public class Cliente{
 
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	
