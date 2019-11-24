@@ -19,7 +19,6 @@ public class App extends Application {
 	private static Scene loginScene;
 	private static Scene indexScene;
 	private static Scene vendaScene;
-	private static Scene compraScene;
 	
 	public static Stage getStage() {
 		return stage;
@@ -50,8 +49,6 @@ public class App extends Application {
 		indexScene = new Scene(fxmlIndex);
 		Parent fxmlVenda = FXMLLoader.load(getClass().getResource("/br/com/fbd/acad/view/FazerVenda.fxml"));
 		vendaScene = new Scene(fxmlVenda);
-		Parent fxmlCompra = FXMLLoader.load(getClass().getResource("/br/com/fbd/acad/view/FazerCompra.fxml"));
-		compraScene = new Scene(fxmlCompra);
 
 		stage.setScene(loginScene);
 		stage.show();
@@ -71,10 +68,6 @@ public class App extends Application {
 		case "venda":
 			stage.setScene(vendaScene);
 			notifyAllListeners("venda", userData);
-			break;
-		case "compra":
-			stage.setScene(compraScene);
-			notifyAllListeners("compra", userData);
 			break;
 		}
 	}

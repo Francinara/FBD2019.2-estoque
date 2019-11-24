@@ -41,6 +41,17 @@ public class Produto {
 		this.id_fornecedor = id_fornecedor;
 		this.quantidade = quantidade;
 	}
+	
+	
+
+	public Produto(Integer id, String descricao, double preco, String fornecedor, int quantidade) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.fornecedor = fornecedor;
+		this.quantidade = quantidade;
+	}
 
 	public String getDescricao() {
 		return descricao;

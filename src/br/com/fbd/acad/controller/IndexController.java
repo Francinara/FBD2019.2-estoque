@@ -20,10 +20,11 @@ import br.com.fbd.acad.dao.DaoCliente;
 import br.com.fbd.acad.dao.DaoFornecedor;
 import br.com.fbd.acad.dao.DaoFuncionario;
 import br.com.fbd.acad.dao.DaoProduto;
+import br.com.fbd.acad.dao.DaoVenda;
+import br.com.fbd.acad.dao.IDaoVenda;
 import br.com.fbd.acad.entidade.Cliente;
 import br.com.fbd.acad.entidade.Fornecedor;
 import br.com.fbd.acad.entidade.Funcionario;
-import br.com.fbd.acad.entidade.Gasto;
 import br.com.fbd.acad.entidade.Produto;
 import br.com.fbd.acad.entidade.Venda;
 import javafx.beans.value.ChangeListener;
@@ -93,13 +94,6 @@ public class IndexController implements Initializable{
 	@FXML private JFXButton editarProdutoButton;
     @FXML private JFXButton excluirProdutoButton;
 
-	@FXML private TableView<Gasto> gastoTable;
-	@FXML private TableColumn<Gasto, Integer> idGastoClm;
-	@FXML private TableColumn<Gasto, Date> dataGastoClm;
-	@FXML private TableColumn<Gasto, String> fornecedorGastoClm;
-	@FXML private TableColumn<Gasto, Double> precoGastoClm;
-	@FXML private TableColumn<Gasto, String> funcionarioGastoClm;
-
 	@FXML private TableView<Fornecedor> fornecedorTable; 
 	@FXML private TableColumn<Fornecedor, Integer> idFornecdorClm;
 	@FXML private TableColumn<Fornecedor, String> empresaFornecdorClm;
@@ -154,6 +148,7 @@ public class IndexController implements Initializable{
 		initTableFuncionarios();
 		initTableFornecedores();
 		initTableProduto();
+		initTableVenda();
 		
 		funcionarioTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
@@ -312,11 +307,6 @@ public class IndexController implements Initializable{
     	}
     }
 
-	@FXML
-	void cadastrarGastos(ActionEvent event) {
-		App.changeScreen("compra", funcionario);
-	}
-
 	private void verificarAcesso(int Cargo) {
 		if(businessFuncionario.verificarAcesso(funcionario.getId_cargo())) {
 			funcionariosButton.setVisible(true);
@@ -326,6 +316,20 @@ public class IndexController implements Initializable{
 			funcionariosButton.setVisible(false);
 			relatoriosButton.setVisible(false);
 		}
+	}
+	
+	public void initTableVenda() {
+		idVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, Integer>("id"));
+		dataVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, Date>("data_venda"));
+		clienteVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, String>("cliente"));
+		funcionarioVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, String>("funcionario"));
+		precoVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, Double>("valor"));
+		vendaTable.setItems(updateTableVenda());
+	}
+
+	public ObservableList<Venda> updateTableVenda(){
+		IDaoVenda daoVenda = new DaoVenda();
+		return FXCollections.observableArrayList(daoVenda.getList());
 	}
 
 	public void initTableClientes() {

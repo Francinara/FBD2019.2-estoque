@@ -55,7 +55,7 @@ public class DaoVenda implements IDaoVenda {
 			
 			while(result.next()) {
 				Venda venda = new Venda(result.getInt("id"), result.getDouble("valor"), result.getDate("data_venda"), 
-						result.getInt("id_funcionario"), result.getString("nome"), result.getInt("id_cliente"), result.getString("id_cliente"));
+						result.getInt("id_funcionario"), result.getString("nome"), result.getInt("id_cliente"), result.getString("cliente"));
 				vendas.add(venda);
 			}
 			statement.close();

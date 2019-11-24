@@ -138,7 +138,7 @@ public class DaoCliente implements IDaoCliente {
 
 			while(result.next()) {
 				if (result.getBoolean("ativo")){
-					Cliente cliente = new Cliente(result.getInt("id"), result.getString("nome"), result.getString("email"), 
+					Cliente cliente = new Cliente(result.getInt("id"), result.getString("cliente"), result.getString("email"), 
 							result.getString("telefone"), result.getBoolean("ativo"));
 					clientes.add(cliente);
 				}	

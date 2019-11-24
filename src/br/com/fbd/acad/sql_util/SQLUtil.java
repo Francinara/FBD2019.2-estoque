@@ -29,7 +29,7 @@ public class SQLUtil {
 	
 	public static class Cliente{
 		private static String NOME_TABELA = "clientes";
-		private static String COL_NOME = "nome";
+		private static String COL_NOME = "cliente";
 		private static String COL_EMAIL = "email";
 		private static String COL_TELEFONE = "telefone";
 		private static String COL_ATIVO = "ativo";
@@ -92,19 +92,6 @@ public class SQLUtil {
 		
 	}
 	
-	public static class Gasto{
-		private static String NOME_TABELA = "gasto";
-		private static String COL_VALOR = "valor";
-		private static String COL_DATA = "data_gasto";
-		private static String COL_FUNCIONARIO = "id_funcionario";
-		private static String COL_FORNECEDOR = "id_fornecedor";
-		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_VALOR +","+COL_DATA+","+COL_FUNCIONARIO+","+COL_FORNECEDOR+") values (?,?,?,?)";
-		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
-		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_VALOR+"=?,"+COL_DATA+"=?,"+COL_FUNCIONARIO+"=?,"+COL_FORNECEDOR+"=? WHERE id=?";
-		
-	}
-	
 	public static class Produto{
 		private static String NOME_TABELA = "produtos";
 		private static String COL_DESCRICAO = "descricao";
@@ -129,18 +116,6 @@ public class SQLUtil {
 		public static String SELECT_INNER = "SELECT * FROM "+NOME_TABELA+" "
 				+ "INNER JOIN "+TABELA_CATEGORIA+" ON "+COL_CATEGORIA+"="+CATEGORIA_ID
 				+ " INNER JOIN "+ TABELA_FORNECEDORES+ " ON "+ COL_FORNECEDOR +"="+FORNECEDOR_ID;
-		
-	}
-	
-	public static class ProdutoGasto{
-		private static String NOME_TABELA = "produto_gasto";
-		private static String COL_PRODUTO = "id_produto";
-		private static String COL_GASTO = "id_gasto";
-		private static String COL_QUANTIDADE = "quantidade";
-		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_PRODUTO +","+COL_GASTO+","+COL_QUANTIDADE+") values (?,?,?)";
-		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
-		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_PRODUTO+"=?,"+COL_GASTO+"=?,"+COL_QUANTIDADE+"=? WHERE id=?";
 		
 	}
 
