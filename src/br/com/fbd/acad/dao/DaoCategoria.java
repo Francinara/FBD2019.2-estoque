@@ -22,7 +22,7 @@ public class DaoCategoria implements IDaoCategoria{
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Categoria.INSERT_ALL);
 			
-			statement.setString(1, categoria.getNome());
+			statement.setString(1, categoria.getCategoria());
 			
 			statement.execute();
 			
@@ -42,7 +42,7 @@ public class DaoCategoria implements IDaoCategoria{
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Categoria.UPDATE_ALL);
 			
-			statement.setString(1, categoria.getNome());
+			statement.setString(1, categoria.getCategoria());
 			statement.setInt(2, categoria.getId());
 			
 			statement.execute();
@@ -94,7 +94,7 @@ public class DaoCategoria implements IDaoCategoria{
 			result = statement.executeQuery();
 			
 			while(result.next()) {
-				Categoria categoria = new Categoria(result.getInt("id"), result.getString("nome"));
+				Categoria categoria = new Categoria(result.getInt("id"), result.getString("categoria"));
 				categorias.add(categoria);
 				
 			}

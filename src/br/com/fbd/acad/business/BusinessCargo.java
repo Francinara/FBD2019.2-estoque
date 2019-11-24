@@ -14,14 +14,14 @@ public class BusinessCargo implements IBusinessCargo {
 
 	@Override
 	public boolean cadastrar(Cargo cargo) {
-		if(daoCargo.validar_nome(cargo.getNome())) {
+		if(daoCargo.validar_nome(cargo.getCargo())) {
 			if(daoCargo.cadastrar(cargo)) {
 				return true;
 			}
 		}return false;
 	}
 	public boolean editar(Cargo cargo) {
-		if(daoCargo.validar_nome(cargo.getNome())) {
+		if(daoCargo.validar_nome(cargo.getCargo())) {
 			if(daoCargo.editar(cargo)) {
 				return true;
 			}

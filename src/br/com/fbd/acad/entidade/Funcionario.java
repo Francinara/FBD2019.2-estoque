@@ -107,4 +107,9 @@ public class Funcionario {
 		this.ativo = ativo;
 	}
 
+	@Override
+	public String toString() {
+		return getNome();
+	}
+
 }

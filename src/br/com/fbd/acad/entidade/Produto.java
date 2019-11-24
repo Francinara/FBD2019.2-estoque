@@ -6,22 +6,26 @@ public class Produto {
 	private String descricao;
 	private String codigo;
 	private Integer id_categoria;
+	private String categoria;
 	private double preco;
 	private double custo;
 	private Integer id_fornecedor;
+	private String fornecedor;
 	private int quantidade;
 	private boolean ativo;
 	
-	public Produto(Integer id, String descricao, String codigo, Integer id_categoria, double preco, double custo,
-			Integer id_fornecedor, int quantidade, boolean ativo) {
+	public Produto(Integer id, String descricao, String codigo, Integer id_categoria,String categoria, double preco, double custo,
+			Integer id_fornecedor, String fornecedor, int quantidade, boolean ativo) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.codigo = codigo;
 		this.id_categoria = id_categoria;
+		this.categoria = categoria;
 		this.preco = preco;
 		this.custo = custo;
 		this.id_fornecedor = id_fornecedor;
+		this.fornecedor = fornecedor;
 		this.quantidade = quantidade;
 		this.ativo = ativo;
 	}
@@ -104,6 +108,27 @@ public class Produto {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
+	@Override
+	public String toString() {
+		return getDescricao() +" - "+getFornecedor()+" - "+getQuantidade()+" Unidades disponiveis";
 	}
 
 }

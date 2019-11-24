@@ -18,7 +18,7 @@
          </font>
       </Text>
       <ComboBox fx:id="categoriaField" layoutX="29.0" layoutY="134.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
-      <Label layoutX="30.0" layoutY="186.0" text="Nome *" />
+      <Label layoutX="30.0" layoutY="186.0" text="Descrição*" />
       <TextField fx:id="nomeField" layoutX="30.0" layoutY="203.0" prefHeight="40.0" prefWidth="400.0" />
       <Label layoutX="30.0" layoutY="253.0" text="Código *" />
       <TextField fx:id="codigoField" layoutX="30.0" layoutY="270.0" prefHeight="40.0" prefWidth="400.0" />

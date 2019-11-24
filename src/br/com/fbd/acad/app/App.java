@@ -3,6 +3,7 @@ package br.com.fbd.acad.app;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import br.com.fbd.acad.dao.DaoProduto;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +32,11 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
+		
+		DaoProduto daoProduto = new DaoProduto();
+		
+		daoProduto.getList();
+		
 		App.stage = stage;
 		
 		stage.setTitle("Estoque");

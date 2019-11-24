@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -13,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="280.0" maxWidth="1180.0" minHeight="680.0" minWidth="1180.0" prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #fff;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.FazerVendaController">
+<AnchorPane maxHeight="280.0" maxWidth="1180.0" minHeight="680.0" minWidth="1180.0" prefHeight="680.0" prefWidth="1180.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.FazerVendaController">
    <children>
-      <JFXButton fx:id="closeButton" focusTraversable="false" layoutX="1130.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <JFXButton fx:id="closeButton" focusTraversable="false" layoutX="1127.0" layoutY="3.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #fff;" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
          <graphic>
             <ImageView fitHeight="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -27,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="salvarButton" layoutX="971.0" layoutY="614.0" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00bf5c;" text="Salvar" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+      <JFXButton fx:id="salvarButton" layoutX="971.0" layoutY="614.0" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00bf5c;" text="Finalizar" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -48,7 +49,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <ComboBox fx:id="clienteField" layoutX="107.0" layoutY="107.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="107.0" />
+      <ComboBox fx:id="clienteField" layoutX="107.0" layoutY="107.0" prefHeight="40.0" prefWidth="400.0" promptText="Selecionar Cliente" style="-fx-background-color: #fff; -fx-border-color: #ccc;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="107.0" />
       <Label layoutX="107.0" layoutY="90.0" text="Cliente" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="90.0" />
       <Label fx:id="funcionarioLabel" layoutX="570.0" layoutY="119.0" text="Nome do funcionario corrente aqui" />
       <Label layoutX="862.0" layoutY="86.0" text="Valor" AnchorPane.rightAnchor="25.0" />
@@ -61,6 +62,7 @@
       <DatePicker fx:id="dataField" layoutX="25.0" layoutY="179.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 0;" stylesheets="@style.css" AnchorPane.leftAnchor="25.0" />
       <TableView layoutX="25.0" layoutY="260.0" prefHeight="302.0" prefWidth="1006.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
         <columns>
+            <TableColumn prefWidth="75.0" text="ID" />
           <TableColumn prefWidth="173.66666412353516" text="Produto" />
           <TableColumn prefWidth="503.33333587646484" text="Descrição" />
             <TableColumn prefWidth="152.0" text="Quantidade" />
@@ -72,5 +74,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <ComboBox fx:id="produtoField" layoutX="254.0" layoutY="179.0" onAction="#comboBoxHandler" prefHeight="40.0" prefWidth="505.0" promptText="Selecionar Produto" style="-fx-background-color: #fff; -fx-border-color: #ccc;" stylesheets="@style.css" />
+      <Label layoutX="255.0" layoutY="162.0" text="Produto" />
+      <Label fx:id="quantidadeLabel" layoutX="807.0" layoutY="162.0" text="Quantidade" />
+      <JFXButton fx:id="adicionarButton" layoutX="1043.0" layoutY="179.0" onAction="#handleButtonAdicionar" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #00bf5c;" text="Adicionar" textFill="WHITE" AnchorPane.rightAnchor="25.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Spinner fx:id="quantidadeField" layoutX="807.0" layoutY="179.0" prefHeight="40.0" prefWidth="193.0" />
    </children>
 </AnchorPane>

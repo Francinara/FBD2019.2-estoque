@@ -11,12 +11,15 @@ import br.com.fbd.acad.app.App;
 import br.com.fbd.acad.business.BusinessCliente;
 import br.com.fbd.acad.business.BusinessFornecedor;
 import br.com.fbd.acad.business.BusinessFuncionario;
+import br.com.fbd.acad.business.BusinessProduto;
 import br.com.fbd.acad.business.IBusinessCliente;
 import br.com.fbd.acad.business.IBusinessFornecedor;
 import br.com.fbd.acad.business.IBusinessFuncionario;
+import br.com.fbd.acad.business.IBusinessProduto;
 import br.com.fbd.acad.dao.DaoCliente;
 import br.com.fbd.acad.dao.DaoFornecedor;
 import br.com.fbd.acad.dao.DaoFuncionario;
+import br.com.fbd.acad.dao.DaoProduto;
 import br.com.fbd.acad.entidade.Cliente;
 import br.com.fbd.acad.entidade.Fornecedor;
 import br.com.fbd.acad.entidade.Funcionario;
@@ -44,6 +47,7 @@ public class IndexController implements Initializable{
 	private IBusinessFuncionario businessFuncionario = new BusinessFuncionario();
 	private IBusinessCliente businessCliente = new BusinessCliente();
 	private IBusinessFornecedor businessFornecedor = new BusinessFornecedor();
+	private IBusinessProduto businessProduto = new BusinessProduto();
 
 	@FXML private Pane relatorioPane;
 	@FXML private Pane funcionarioPane;
@@ -80,6 +84,7 @@ public class IndexController implements Initializable{
 	@FXML private TableView<Produto> produtoTable;
 	@FXML private TableColumn<Produto, Integer> idProdutoClm;
 	@FXML private TableColumn<Produto, String> nomeProdutoClm;
+	@FXML private TableColumn<Produto, String> fornecedorProdutoClm;
 	@FXML private TableColumn<Produto, String> categoriaProdutoClm;
 	@FXML private TableColumn<Produto, Double> precoProdutoClm;
 	@FXML private TableColumn<Produto, Double> custoProdutoClm;
@@ -117,6 +122,7 @@ public class IndexController implements Initializable{
 	private Funcionario funcionarioSelecionado;
 	private Cliente clienteSelecionado;
 	private Fornecedor fornecedorSelecionado;
+	private Produto produtoSelecionado;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -147,6 +153,7 @@ public class IndexController implements Initializable{
 		initTableClientes();
 		initTableFuncionarios();
 		initTableFornecedores();
+		initTableProduto();
 		
 		funcionarioTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
@@ -174,6 +181,15 @@ public class IndexController implements Initializable{
 				excluirFornecedorButton.setVisible(true);
 				editarFornecedorButton.setVisible(true);
 				fornecedorSelecionado = (Fornecedor)newValue;
+			}
+		});
+		produtoTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+				excluirProdutoButton.setVisible(true);
+				editarProdutoButton.setVisible(true);
+				produtoSelecionado = (Produto)newValue;
 			}
 		});
 
@@ -260,7 +276,12 @@ public class IndexController implements Initializable{
 
     @FXML
     void excluirProduto(ActionEvent event) {
-
+    	if(produtoSelecionado != null) {
+    		businessProduto.excluir(produtoSelecionado.getId());
+    		produtoTable.setItems(updateTableProduto());
+    		excluirProdutoButton.setVisible(false);
+			editarProdutoButton.setVisible(false);
+    	}
     }
 
 	@FXML
@@ -319,6 +340,23 @@ public class IndexController implements Initializable{
 		DaoCliente daoCliente = new DaoCliente();
 		return FXCollections.observableArrayList(daoCliente.getList());
 	}
+	
+	
+	public void initTableProduto() {
+		idProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("id"));
+		nomeProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, String>("descricao"));
+		fornecedorProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, String>("fornecedor"));
+		categoriaProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, String>("categoria"));
+		precoProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, Double>("preco"));
+		custoProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, Double>("custo"));
+		qtdProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("quantidade"));
+		produtoTable.setItems(updateTableProduto());
+	}
+
+	public ObservableList<Produto> updateTableProduto(){
+		DaoProduto daoProduto = new DaoProduto();
+		return FXCollections.observableArrayList(daoProduto.getList());
+	}
 
 	public void initTableFuncionarios() {
 		idFuncionarioClm.setCellValueFactory(new PropertyValueFactory<Funcionario, Integer>("id"));
@@ -346,8 +384,5 @@ public class IndexController implements Initializable{
 		DaoFornecedor daoFornecedor = new DaoFornecedor();
 		return FXCollections.observableArrayList(daoFornecedor.getList());
 	}
-
-
-
 
 }

@@ -8,7 +8,7 @@ public class SQLUtil {
 	
 	public static class Cargo{
 		private static String NOME_TABELA = "cargo";
-		private static String COL_NOME = "nome";
+		private static String COL_NOME = "cargo";
 		
 		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_NOME +") values (?)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
@@ -18,7 +18,7 @@ public class SQLUtil {
 	
 	public static class Categoria{
 		private static String NOME_TABELA = "categoria";
-		private static String COL_NOME = "nome";
+		private static String COL_NOME = "categoria";
 
 		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_NOME +") values (?)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
@@ -112,15 +112,23 @@ public class SQLUtil {
 		private static String COL_CATEGORIA = "id_categoria";
 		private static String COL_PRECO = "preco";
 		private static String COL_CUSTO = "custo";
-		private static String COL_FORNECEDOR = "fornecedor";
+		private static String COL_FORNECEDOR = "id_fornecedor";
 		private static String COL_QUANTIDADE = "quantidade";
 		private static String COL_ATIVO = "ativo";
+		
+		private static String TABELA_CATEGORIA = "categoria";
+		private static String CATEGORIA_ID = "categoria.id";
+		private static String TABELA_FORNECEDORES = "fornecedores";
+		private static String FORNECEDOR_ID = "fornecedores.id";
 		
 		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_DESCRICAO +","+COL_CODIGO+","+COL_CATEGORIA+","+COL_PRECO+","+COL_CUSTO+","+COL_FORNECEDOR+","+COL_QUANTIDADE+","+COL_ATIVO+") values (?,?,?,?,?,?,?,true)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_DESCRICAO+"=?,"+COL_CODIGO+"=?,"+COL_CATEGORIA+"=?,"+COL_PRECO+"=?,"+COL_CUSTO+"=?,"+COL_FORNECEDOR+"=?,"+COL_QUANTIDADE+"=? WHERE id=?";
 		public static String SELECT_CODIGO = "SELECT * FROM "+NOME_TABELA+" WHERE "+COL_CODIGO+"=?";
 		public static String UPDATE_ATIVO = "UPDATE " +NOME_TABELA+" SET "+COL_ATIVO+"=false WHERE id=?";
+		public static String SELECT_INNER = "SELECT * FROM "+NOME_TABELA+" "
+				+ "INNER JOIN "+TABELA_CATEGORIA+" ON "+COL_CATEGORIA+"="+CATEGORIA_ID
+				+ " INNER JOIN "+ TABELA_FORNECEDORES+ " ON "+ COL_FORNECEDOR +"="+FORNECEDOR_ID;
 		
 	}
 	
@@ -154,9 +162,17 @@ public class SQLUtil {
 		private static String COL_FUNCIONARIO = "id_funcionario";
 		private static String COL_CLIENTE = "id_cliente";
 		
+		private static String TABELA_FUNCIONARIO = "funcionarios";
+		private static String FUNCIONARIO_ID = "funcionarios.id";
+		private static String TABELA_CLIENTE = "clientes";
+		private static String CLIENTE_ID = "clientes.id";
+		
 		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_VALOR +","+COL_DATA+","+COL_FUNCIONARIO+","+COL_CLIENTE+") values (?,?,?,?)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_VALOR+"=?,"+COL_DATA+"=?,"+COL_FUNCIONARIO+"=?,"+COL_CLIENTE+"=? WHERE id=?";
+		public static String SELECT_INNER = "SELECT * FROM "+NOME_TABELA+" "
+				+ "INNER JOIN "+TABELA_FUNCIONARIO+" ON "+COL_FUNCIONARIO+"="+FUNCIONARIO_ID
+				+ " INNER JOIN "+ TABELA_CLIENTE+ " ON "+ COL_CLIENTE +"="+CLIENTE_ID;
 		
 		
 	}

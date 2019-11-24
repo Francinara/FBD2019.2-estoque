@@ -19,7 +19,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cargoField" layoutX="28.0" layoutY="132.0" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
+      <ComboBox fx:id="cargoField" layoutX="28.0" layoutY="132.0" prefHeight="40.0" prefWidth="158.0" promptText="Selecionar" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
       <Label layoutX="29.0" layoutY="184.0" text="Nome *" />
       <TextField fx:id="nomeField" layoutX="29.0" layoutY="201.0" prefHeight="40.0" prefWidth="400.0" />
       <Label layoutX="29.0" layoutY="251.0" text="Email *" />

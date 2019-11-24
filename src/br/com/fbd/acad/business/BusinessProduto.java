@@ -20,7 +20,7 @@ public class BusinessProduto implements IBusinessProduto{
 			if(daoProduto.cadastrar(produto)) {
 				return "0";
 			}
-		}return "Codigo já exite";
+		}return "Código já exite";
 	}
 
 	@Override

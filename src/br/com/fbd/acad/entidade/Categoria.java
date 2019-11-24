@@ -3,29 +3,34 @@ package br.com.fbd.acad.entidade;
 public class Categoria {
 	
 	private Integer id;
-	private String nome;
+	private String categoria;
 	
-	public Categoria(Integer id, String nome) {
+	public Categoria(Integer id, String categoria) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.categoria = categoria;
 	}
 	
-	public Categoria(String nome) {
+	public Categoria(String categoria) {
 		super();
-		this.nome = nome;
+		this.categoria = categoria;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	@Override
+	public String toString() {
+		return getCategoria();
 	}
 
 }

@@ -3,29 +3,34 @@ package br.com.fbd.acad.entidade;
 public class Cargo {
 	
 	private Integer id;
-	private String nome;
+	private String cargo;
 	
-	public Cargo(Integer id, String nome) {
+	public Cargo(Integer id, String cargo) {
 		super();
 		this.id = id;
-		this.nome = nome;
+		this.cargo = cargo;
 	}
 	
-	public Cargo(String nome) {
+	public Cargo(String cargo) {
 		super();
-		this.nome = nome;
+		this.cargo = cargo;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCargo() {
+		return cargo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	@Override
+	public String toString() {
+		return getCargo();
 	}
 	
 }

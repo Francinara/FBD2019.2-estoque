@@ -73,14 +73,14 @@ public class DaoProduto implements IDaoProduto {
 		try {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Produto.UPDATE_ATIVO);
-			
+
 			statement.setInt(1, id);
-			
+
 			statement.execute();
-			
+
 			conexao.close();
 			statement.close();
-			
+
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -142,15 +142,16 @@ public class DaoProduto implements IDaoProduto {
 		List<Produto> produtos = new ArrayList<Produto>();
 		try {
 			conexao = SQLConnection.getConnectionInstance();
-			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_ALL);
+			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_INNER);
 
 			result = statement.executeQuery();
 
 			while(result.next()) {
 				if(result.getBoolean("ativo")) {
-					Produto produto = new Produto(result.getInt("id"), result.getString("descricao"), result.getString("codigo"),
-							result.getInt("id_categoria"), result.getDouble("preco"), result.getDouble("custo"), 
-							result.getInt("id_fornecedor"), result.getInt("quantidade"), result.getBoolean("ativo"));
+					Produto produto = new Produto(result.getInt("id"), result.getString("descricao"), result.getString("codigo"), 
+							result.getInt("id_categoria"), result.getString("categoria"), result.getDouble("preco"), 
+							result.getDouble("custo"), result.getInt("id_fornecedor"), result.getString("empresa"), 
+							result.getInt("quantidade"), result.getBoolean("ativo"));
 					produtos.add(produto);
 				}
 			}

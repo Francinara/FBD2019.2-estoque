@@ -22,7 +22,7 @@ public class DaoCargo implements IDaoCargo {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Cargo.INSERT_ALL);
 			
-			statement.setString(1, cargo.getNome());
+			statement.setString(1, cargo.getCargo());
 	
 			statement.execute();
 			
@@ -41,7 +41,7 @@ public class DaoCargo implements IDaoCargo {
 			conexao = SQLConnection.getConnectionInstance();
 			statement = conexao.prepareStatement(SQLUtil.Cargo.UPDATE_ALL);
 			
-			statement.setString(1, cargo.getNome());
+			statement.setString(1, cargo.getCargo());
 			statement.setInt(2, cargo.getId());
 			
 			statement.execute();
@@ -93,7 +93,7 @@ public class DaoCargo implements IDaoCargo {
 			result = statement.executeQuery();
 			
 			while(result.next()) {
-				Cargo cargo = new Cargo(result.getInt("id"), result.getString("nome"));
+				Cargo cargo = new Cargo(result.getInt("id"), result.getString("cargo"));
 				cargos.add(cargo);			
 			}
 			statement.close();

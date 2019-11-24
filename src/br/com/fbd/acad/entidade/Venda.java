@@ -5,21 +5,26 @@ import java.sql.Date;
 public class Venda {
 	
 	private Integer id;
-	private boolean valor;
+	private double valor;
 	private Date data_venda;
 	private Integer id_funcionario;
+	private String funcionario;
 	private Integer id_cliente;
+	private String cliente;
 	
-	public Venda(Integer id, boolean valor, Date data_venda, Integer id_funcionario, Integer id_cliente) {
+	public Venda(Integer id, double valor, Date data_venda, Integer id_funcionario, String funcionario, Integer id_cliente, 
+			String cliente) {
 		super();
 		this.id = id;
 		this.valor = valor;
 		this.data_venda = data_venda;
 		this.id_funcionario = id_funcionario;
+		this.funcionario = funcionario;
 		this.id_cliente = id_cliente;
+		this.cliente = cliente;
 	}
 
-	public Venda(boolean valor, Date data_venda, Integer id_funcionario, Integer id_cliente) {
+	public Venda(double valor, Date data_venda, Integer id_funcionario, Integer id_cliente) {
 		super();
 		this.valor = valor;
 		this.data_venda = data_venda;
@@ -27,11 +32,11 @@ public class Venda {
 		this.id_cliente = id_cliente;
 	}
 
-	public boolean isValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(boolean valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
@@ -61,6 +66,22 @@ public class Venda {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(String funcionario) {
+		this.funcionario = funcionario;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 
 }
