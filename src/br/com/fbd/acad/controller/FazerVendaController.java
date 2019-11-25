@@ -26,6 +26,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -141,6 +143,9 @@ public class FazerVendaController implements Initializable{
 				if(businessVenda.cadastrar(new Venda(businessVenda.maxId()+1, valor, date, funcionario.getId(), 
 						clienteField.getSelectionModel().getSelectedItem().getId()), produtos)) {
 					clearScream();
+					Alert a = new Alert(AlertType.CONFIRMATION);
+					a.setHeaderText("Venda Finalizada");
+					a.show();
 					App.changeScreen("index", funcionario);
 				}
 			}

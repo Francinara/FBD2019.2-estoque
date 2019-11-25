@@ -301,7 +301,6 @@ public class IndexController implements Initializable{
 
 	@FXML
 	void editarProduto(ActionEvent event) {
-
 	}
 
 	@FXML

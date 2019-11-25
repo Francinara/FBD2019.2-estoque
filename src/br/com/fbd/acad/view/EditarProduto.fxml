@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1180.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fbd.acad.controller.EditarProdutoController">
+   <children>
+      <Label layoutX="58.0" layoutY="36.0" text="Produto nº">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="idLabel" layoutX="209.0" layoutY="36.0" prefHeight="43.0" prefWidth="302.0">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="303.0" text="Descrição*" />
+      <TextField fx:id="nomeField" layoutX="56.0" layoutY="320.0" prefHeight="40.0" prefWidth="400.0" />
+      <Label layoutX="56.0" layoutY="369.0" text="Quantidade*" />
+      <TextField fx:id="quatidadeField" layoutX="56.0" layoutY="386.0" prefHeight="40.0" prefWidth="400.0" />
+      <ComboBox fx:id="categoriaField" layoutX="56.0" layoutY="256.0" prefHeight="40.0" prefWidth="344.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
+      <Label layoutX="56.0" layoutY="239.0" text="Categoria *" />
+      <JFXButton layoutX="417.0" layoutY="256.0" onAction="#adicionarCategoria" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00bf5c;" text="+" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="precoField" layoutX="59.0" layoutY="477.0" prefHeight="40.0" prefWidth="184.0" />
+      <TextField fx:id="custoField" layoutX="259.0" layoutY="477.0" prefHeight="40.0" prefWidth="198.0" />
+      <Label layoutX="59.0" layoutY="460.0" text="Preço de venda*" />
+      <Label layoutX="259.0" layoutY="460.0" text="Custo*" />
+      <TextArea fx:id="observacoesField" layoutX="511.0" layoutY="250.0" prefHeight="268.0" prefWidth="400.0" style="-fx-background-radius: 0;" />
+      <Label layoutX="511.0" layoutY="233.0" text="Observações" />
+      <JFXButton fx:id="cancelarButton" layoutX="59.0" layoutY="605.0" onAction="#buttonHandler" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #fff; -fx-border-color: #ccc; -fx-border-width: 1px;" text="Cancelar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="salvarButton" layoutX="939.0" layoutY="605.0" onAction="#buttonHandler" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00bf5c;" text="Salvar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -94,7 +94,7 @@ public class CadastrarFuncionarioController implements Initializable {
         				senhaField.getText()));
 				if(temp == "0") {
 					Alert a = new Alert(AlertType.CONFIRMATION);
-					a.setHeaderText("Cliente Adicionado com sucesso");
+					a.setHeaderText("Funcionario Adicionado com sucesso");
 					a.show();
 					getStage().close();
 				}else{
