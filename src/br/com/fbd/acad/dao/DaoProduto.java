@@ -166,4 +166,33 @@ public class DaoProduto implements IDaoProduto {
 		return produtos;
 	}
 
+	@Override
+	public List<Produto> getListEstoque() {
+		List<Produto> produtos = new ArrayList<Produto>();
+		try {
+			conexao = SQLConnection.getConnectionInstance();
+			statement = conexao.prepareStatement(SQLUtil.Produto.SELECT_INNER);
+
+			result = statement.executeQuery();
+
+			while(result.next()) {
+				if(result.getBoolean("ativo") && result.getInt("quantidade") > 0) {
+					Produto produto = new Produto(result.getInt("id"), result.getString("descricao"), result.getString("codigo"), 
+							result.getInt("id_categoria"), result.getString("categoria"), result.getDouble("preco"), 
+							result.getDouble("custo"), result.getInt("id_fornecedor"), result.getString("empresa"), 
+							result.getInt("quantidade"), result.getBoolean("ativo"));
+					produtos.add(produto);
+				}
+			}
+
+			conexao.close();
+			statement.close();
+			result.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return produtos;
+	}
+
 }

@@ -24,8 +24,9 @@ public class Venda {
 		this.cliente = cliente;
 	}
 
-	public Venda(double valor, Date data_venda, Integer id_funcionario, Integer id_cliente) {
+	public Venda(Integer id, double valor, Date data_venda, Integer id_funcionario, Integer id_cliente) {
 		super();
+		this.id = id;
 		this.valor = valor;
 		this.data_venda = data_venda;
 		this.id_funcionario = id_funcionario;

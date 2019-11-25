@@ -116,13 +116,14 @@ public class SQLUtil {
 		public static String SELECT_INNER = "SELECT * FROM "+NOME_TABELA+" "
 				+ "INNER JOIN "+TABELA_CATEGORIA+" ON "+COL_CATEGORIA+"="+CATEGORIA_ID
 				+ " INNER JOIN "+ TABELA_FORNECEDORES+ " ON "+ COL_FORNECEDOR +"="+FORNECEDOR_ID;
+		public static String UPDATE_QUATIDADE = "UPDATE "+NOME_TABELA+" SET "+COL_QUANTIDADE+"="+COL_QUANTIDADE+"-? WHERE id=?"; 
 		
 	}
 
 	public static class ProdutoVenda{
 		private static String NOME_TABELA = "produto_venda";
 		private static String COL_PRODUTO = "id_produto";
-		private static String COL_VENDA = "id_gasto";
+		private static String COL_VENDA = "id_venda";
 		private static String COL_QUANTIDADE = "quantidade";
 		
 		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_PRODUTO +","+COL_VENDA+","+COL_QUANTIDADE+") values (?,?,?)";
@@ -132,6 +133,7 @@ public class SQLUtil {
 	}
 	public static class Venda{
 		private static String NOME_TABELA = "venda";
+		private static String COL_ID = "id";
 		private static String COL_VALOR = "valor";
 		private static String COL_DATA = "data_venda";
 		private static String COL_FUNCIONARIO = "id_funcionario";
@@ -142,12 +144,13 @@ public class SQLUtil {
 		private static String TABELA_CLIENTE = "clientes";
 		private static String CLIENTE_ID = "clientes.id";
 		
-		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+ COL_VALOR +","+COL_DATA+","+COL_FUNCIONARIO+","+COL_CLIENTE+") values (?,?,?,?)";
+		public static String INSERT_ALL = "INSERT INTO "+ NOME_TABELA +" ("+COL_ID+","+ COL_VALOR +","+COL_DATA+","+COL_FUNCIONARIO+","+COL_CLIENTE+") values (?,?,?,?,?)";
 		public static String SELECT_ALL = "SELECT * FROM "+NOME_TABELA;
 		public static String UPDATE_ALL = "UPDATE "+NOME_TABELA+" SET "+COL_VALOR+"=?,"+COL_DATA+"=?,"+COL_FUNCIONARIO+"=?,"+COL_CLIENTE+"=? WHERE id=?";
 		public static String SELECT_INNER = "SELECT * FROM "+NOME_TABELA+" "
 				+ "INNER JOIN "+TABELA_FUNCIONARIO+" ON "+COL_FUNCIONARIO+"="+FUNCIONARIO_ID
 				+ " INNER JOIN "+ TABELA_CLIENTE+ " ON "+ COL_CLIENTE +"="+CLIENTE_ID;
+		public static String SELECT_MAX = "SELECT MAX(id) FROM "+NOME_TABELA;
 		
 		
 	}

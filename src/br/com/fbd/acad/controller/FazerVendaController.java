@@ -19,6 +19,8 @@ import br.com.fbd.acad.entidade.Cliente;
 import br.com.fbd.acad.entidade.Funcionario;
 import br.com.fbd.acad.entidade.Produto;
 import br.com.fbd.acad.entidade.Venda;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,17 +34,16 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class FazerVendaController implements Initializable{
 
-
-
 	IBusinessVenda businessVenda = new BusinessVenda();
 
-
-	static IBusinessProduto businessProduto = new BusinessProduto();
-	static List<Produto> businessListProduto = businessProduto.getList();
+	IBusinessProduto businessProduto = new BusinessProduto();
+	List<Produto> businessListProduto = businessProduto.getListEstoque();
 
 	List<Produto> produtos = new ArrayList<Produto>();
 
@@ -60,6 +61,7 @@ public class FazerVendaController implements Initializable{
 	@FXML private Spinner<Integer> quantidadeField;
 	@FXML private JFXButton adicionarButton;
 	@FXML private Label alertLabel;
+	@FXML private Label vendaLabel;
 
 	@FXML private TableView<Produto> produtoTable;
 	@FXML private TableColumn<Produto, Integer> idProdutoClm;
@@ -69,6 +71,8 @@ public class FazerVendaController implements Initializable{
 	@FXML private TableColumn<Produto, Double> valorProdutoClm;
 
 	private double valor;
+	
+	private Produto produtoSelecionado;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -82,15 +86,36 @@ public class FazerVendaController implements Initializable{
 			public void onScreenChanged(String newScreen, Object userData) {
 				funcionario =  (Funcionario)userData;
 				funcionarioLabel.setText(funcionario.getNome());
+				vendaLabel.setText("nº"+(businessVenda.maxId()+1));
 
 			}
 		});
 		closeButton.setOnMouseClicked((MouseEvent event)->{
+			clearScream();
 			App.changeScreen("index", funcionario);
 		});
 
 		cancelarButton.setOnMouseClicked((MouseEvent event)->{
+			clearScream();
 			App.changeScreen("index", funcionario);
+		});
+		
+		produtoTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+				produtoSelecionado = (Produto)newValue;
+			}
+		});
+		
+		produtoTable.setOnKeyPressed((KeyEvent event)->{
+			System.out.println("entrei Viado");
+			if(event.getCode() == KeyCode.DELETE) {
+				if(produtoSelecionado != null) {
+		    		produtos.remove(produtoSelecionado);
+		    		produtoTable.setItems(updateTableProduto());
+		    	}
+			}
 		});
 
 	}
@@ -112,49 +137,67 @@ public class FazerVendaController implements Initializable{
 			}
 			else {
 				Date date = Date.valueOf(dataField.getValue());
-				businessVenda.cadastrar(new Venda(valor, date, funcionario.getId(), 
-						clienteField.getSelectionModel().getSelectedItem().getId()));
+				if(businessVenda.cadastrar(new Venda(businessVenda.maxId()+1, valor, date, funcionario.getId(), 
+						clienteField.getSelectionModel().getSelectedItem().getId()), produtos)) {
+					clearScream();
+					App.changeScreen("index", funcionario);
+				}
 			}
 		}
 	}
 
 	@FXML
 	void handleButtonAdicionar(ActionEvent event) {
-		valor += produtoField.getSelectionModel().getSelectedItem().getPreco() * quantidadeField.getValue();
-		valorLabel.setText("R$"+valor);
+		if(produtoField.getSelectionModel().getSelectedItem() == null) {
+			alertLabel.setVisible(true);
+			alertLabel.setText("Selecione um produto");
+		}else if(quantidadeField.getValue() == 0) {
+			alertLabel.setVisible(true);
+			alertLabel.setText("Valor invalido");
+		}
 
-		Produto produto =  new Produto(produtoField.getSelectionModel().getSelectedItem().getId(), 
-				produtoField.getSelectionModel().getSelectedItem().getDescricao(), 
-				produtoField.getSelectionModel().getSelectedItem().getPreco(), 
-				produtoField.getSelectionModel().getSelectedItem().getFornecedor(), quantidadeField.getValue());
+		else {
+			valor += produtoField.getSelectionModel().getSelectedItem().getPreco() * quantidadeField.getValue();
+			valorLabel.setText("R$"+valor);
 
-		produtoField.getSelectionModel().getSelectedItem().setQuantidade(produtoField.getSelectionModel().getSelectedItem().getQuantidade() 
-				- quantidadeField.getValue());
+			Produto produto =  new Produto(produtoField.getSelectionModel().getSelectedItem().getId(), 
+					produtoField.getSelectionModel().getSelectedItem().getDescricao(), 
+					produtoField.getSelectionModel().getSelectedItem().getPreco(), 
+					produtoField.getSelectionModel().getSelectedItem().getFornecedor(), quantidadeField.getValue());
+			produtos.add(produto);
+			produtoTable.setItems(updateTableProduto());
 
-		produtoField.setItems(FXCollections.observableArrayList(businessListProduto));
+			for(Produto produto1: businessListProduto) {
+				if(produto1 == produtoField.getSelectionModel().getSelectedItem()) {
+					produto1.setQuantidade(produto1.getQuantidade()-quantidadeField.getValue());
+					if(produto1.getQuantidade() == 0) {
+						businessListProduto.remove(produto1);
+					}break;
+				}
+			}
 
-		produtos.add(produto);
-		produtoTable.setItems(updateTableProduto());
+			produtoField.setItems(FXCollections.observableArrayList(businessListProduto));
+			
+			produtoField.getSelectionModel().clearSelection();
+			quantidadeField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 0));
+		}
 	}
 
 	@FXML
 	void comboBoxHandler(ActionEvent event) {
-		if(produtoField.getSelectionModel().getSelectedItem().getQuantidade() == 0) {
-			System.out.println("Acabou");
-		}else {
-			SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,
-					produtoField.getSelectionModel().getSelectedItem().getQuantidade(),1);
+		if(produtoField.getSelectionModel().getSelectedItem() != null) {
+			SpinnerValueFactory<Integer> spinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,
+					produtoField.getSelectionModel().getSelectedItem().getQuantidade(),0);
 			this.quantidadeField.setValueFactory(spinnerValueFactory);
-		}
-
+		}	
 	}
-
+	
 	public void carregarFornecedor(){
 		IBusinessCliente businessCliente = new BusinessCliente();
 		clienteField.setItems(FXCollections.observableArrayList(businessCliente.getList()));
 
 	}
-	
+
 	public void carregarProduto(){
 		produtoField.setItems(FXCollections.observableArrayList(businessListProduto));
 
@@ -171,6 +214,19 @@ public class FazerVendaController implements Initializable{
 
 	public ObservableList<Produto> updateTableProduto(){
 		return FXCollections.observableArrayList(produtos);
+	}
+	
+	public void clearScream() {
+		clienteField.getSelectionModel().clearSelection();
+		produtoField.getSelectionModel().clearSelection();
+		dataField.setValue(null);
+		quantidadeField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 0));
+		produtos.clear();
+		businessListProduto = businessProduto.getListEstoque();
+		valorLabel.setText("R$0.0");
+		produtoTable.setItems(updateTableProduto());
+		carregarProduto();
+		valor = 0;
 	}
 
 }

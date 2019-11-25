@@ -10,5 +10,6 @@ public interface IBusinessProduto {
 	public String editar(Produto produto);
 	public boolean excluir(int id);
 	public List<Produto> getList();
+	public List<Produto> getListEstoque();
 
 }

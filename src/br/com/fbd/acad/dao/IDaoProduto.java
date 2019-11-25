@@ -12,5 +12,6 @@ public interface IDaoProduto {
 	public boolean validarCodigo(String codigo);
 	public boolean isEmpty();
 	public List<Produto> getList();
+	public List<Produto> getListEstoque();
 
 }

@@ -41,6 +41,9 @@ public class BusinessProduto implements IBusinessProduto{
 		return daoProduto.getList();
 	}
 
-
+	@Override
+	public List<Produto> getListEstoque() {
+		return daoProduto.getListEstoque();
+	}
 
 }
