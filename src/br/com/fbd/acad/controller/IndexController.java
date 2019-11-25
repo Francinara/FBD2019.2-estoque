@@ -12,6 +12,7 @@ import br.com.fbd.acad.business.BusinessCliente;
 import br.com.fbd.acad.business.BusinessFornecedor;
 import br.com.fbd.acad.business.BusinessFuncionario;
 import br.com.fbd.acad.business.BusinessProduto;
+import br.com.fbd.acad.business.BusinessVenda;
 import br.com.fbd.acad.business.IBusinessCliente;
 import br.com.fbd.acad.business.IBusinessFornecedor;
 import br.com.fbd.acad.business.IBusinessFuncionario;
@@ -38,6 +39,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -78,9 +81,9 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Cliente, String> nomeClienteClm;
 	@FXML private TableColumn<Cliente, String> emailClienteClm;
 	@FXML private TableColumn<Cliente, String> telefoneClienteClm;
-	
+
 	@FXML private JFXButton editarClienteButton;
-    @FXML private JFXButton excluirClienteButton;
+	@FXML private JFXButton excluirClienteButton;
 
 	@FXML private TableView<Produto> produtoTable;
 	@FXML private TableColumn<Produto, Integer> idProdutoClm;
@@ -90,9 +93,9 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Produto, Double> precoProdutoClm;
 	@FXML private TableColumn<Produto, Double> custoProdutoClm;
 	@FXML private TableColumn<Produto, Integer> qtdProdutoClm;
-	
+
 	@FXML private JFXButton editarProdutoButton;
-    @FXML private JFXButton excluirProdutoButton;
+	@FXML private JFXButton excluirProdutoButton;
 
 	@FXML private TableView<Fornecedor> fornecedorTable; 
 	@FXML private TableColumn<Fornecedor, Integer> idFornecdorClm;
@@ -100,7 +103,7 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Fornecedor, String> representanteFornecdorClm;
 	@FXML private TableColumn<Fornecedor, String> emailFornecdorClm;
 	@FXML private TableColumn<Fornecedor, String> telefoneFornecdorClm;
-	
+
 	@FXML private JFXButton editarFornecedorButton;
 	@FXML private JFXButton excluirFornecedorButton;
 
@@ -109,17 +112,18 @@ public class IndexController implements Initializable{
 	@FXML private TableColumn<Funcionario, String> nomeFuncionarioClm;
 	@FXML private TableColumn<Funcionario, String> emailFuncionarioClm;
 	@FXML private TableColumn<Funcionario, String> telefoneFuncionarioClm;
-	
+
 	@FXML private JFXButton editarFuncionarioButton;
-    @FXML private JFXButton excluirFuncionarioButton;
-	
+	@FXML private JFXButton excluirFuncionarioButton;
+
 	private Funcionario funcionarioSelecionado;
 	private Cliente clienteSelecionado;
 	private Fornecedor fornecedorSelecionado;
 	private Produto produtoSelecionado;
 
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
+
 		App.addOnChangeScreenListener(new App.OnChangeScreen() {
 			@Override
 			public void onScreenChanged(String newScreen, Object userData) {
@@ -141,15 +145,15 @@ public class IndexController implements Initializable{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 		});
-		
+
 		initTableClientes();
 		initTableFuncionarios();
 		initTableFornecedores();
 		initTableProduto();
 		initTableVenda();
-		
+
 		funcionarioTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
 			@Override
@@ -159,7 +163,7 @@ public class IndexController implements Initializable{
 				funcionarioSelecionado = (Funcionario)newValue;
 			}
 		});
-		
+
 		clienteTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
 			@Override
@@ -185,6 +189,37 @@ public class IndexController implements Initializable{
 				excluirProdutoButton.setVisible(true);
 				editarProdutoButton.setVisible(true);
 				produtoSelecionado = (Produto)newValue;
+			}
+		});
+
+		produtoTable.setOnKeyPressed((KeyEvent event)->{
+			if(event.getCode() == KeyCode.R) {
+				produtoTable.setItems(updateTableProduto());
+
+			}
+		});
+		clienteTable.setOnKeyPressed((KeyEvent event)->{
+			if(event.getCode() == KeyCode.R) {
+				clienteTable.setItems(updateTableCliente());
+
+			}
+		});
+		funcionarioTable.setOnKeyPressed((KeyEvent event)->{
+			if(event.getCode() == KeyCode.R) {
+				funcionarioTable.setItems(updateTableFuncionario());
+
+			}
+		});
+		vendaTable.setOnKeyPressed((KeyEvent event)->{
+			if(event.getCode() == KeyCode.R) {
+				vendaTable.setItems(updateTableVenda());
+
+			}
+		});
+		fornecedorTable.setOnKeyPressed((KeyEvent event)->{
+			if(event.getCode() == KeyCode.R) {
+				fornecedorTable.setItems(updateTableFornecedor());
+
 			}
 		});
 
@@ -216,21 +251,21 @@ public class IndexController implements Initializable{
 		}
 
 	}
-	
+
 	@FXML
-    void editarFuncionario(ActionEvent event) {
+	void editarFuncionario(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void excluirFuncionario(ActionEvent event) {
-    	if(funcionarioSelecionado != null) {
-    		businessFuncionario.excluir(funcionarioSelecionado.getId());
-    		funcionarioTable.setItems(updateTableFuncionario());
-    		excluirFuncionarioButton.setVisible(false);
+	@FXML
+	void excluirFuncionario(ActionEvent event) {
+		if(funcionarioSelecionado != null) {
+			businessFuncionario.excluir(funcionarioSelecionado.getId());
+			funcionarioTable.setItems(updateTableFuncionario());
+			excluirFuncionarioButton.setVisible(false);
 			editarFuncionarioButton.setVisible(false);
-    	}
-    }
+		}
+	}
 
 	@FXML
 	void cadastrarCliente(ActionEvent event) {
@@ -240,20 +275,20 @@ public class IndexController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
-	@FXML
-    void editarCliente(ActionEvent event) {
-    }
 
-    @FXML
-    void excluirCliente(ActionEvent event) {
-    	if(clienteSelecionado != null) {
-    		businessCliente.excluir(clienteSelecionado.getId());
-    		clienteTable.setItems(updateTableCliente());
-    		excluirClienteButton.setVisible(false);
+	@FXML
+	void editarCliente(ActionEvent event) {
+	}
+
+	@FXML
+	void excluirCliente(ActionEvent event) {
+		if(clienteSelecionado != null) {
+			businessCliente.excluir(clienteSelecionado.getId());
+			clienteTable.setItems(updateTableCliente());
+			excluirClienteButton.setVisible(false);
 			editarClienteButton.setVisible(false);
-    	}
-    }
+		}
+	}
 
 	@FXML
 	void cadastrarProduto(ActionEvent event) {
@@ -263,21 +298,21 @@ public class IndexController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-    void editarProduto(ActionEvent event) {
+	void editarProduto(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void excluirProduto(ActionEvent event) {
-    	if(produtoSelecionado != null) {
-    		businessProduto.excluir(produtoSelecionado.getId());
-    		produtoTable.setItems(updateTableProduto());
-    		excluirProdutoButton.setVisible(false);
+	@FXML
+	void excluirProduto(ActionEvent event) {
+		if(produtoSelecionado != null) {
+			businessProduto.excluir(produtoSelecionado.getId());
+			produtoTable.setItems(updateTableProduto());
+			excluirProdutoButton.setVisible(false);
 			editarProdutoButton.setVisible(false);
-    	}
-    }
+		}
+	}
 
 	@FXML
 	void cadastrarVenda(ActionEvent event) {
@@ -291,21 +326,21 @@ public class IndexController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
-	@FXML
-    void editarFornecedor(ActionEvent event) {
-		
-    }
 
-    @FXML
-    void excluirFornecedor(ActionEvent event) {
-    	if(fornecedorSelecionado != null) {
-    		businessFornecedor.excluir(fornecedorSelecionado.getId());
-    		fornecedorTable.setItems(updateTableFornecedor());
-    		excluirFornecedorButton.setVisible(false);
+	@FXML
+	void editarFornecedor(ActionEvent event) {
+
+	}
+
+	@FXML
+	void excluirFornecedor(ActionEvent event) {
+		if(fornecedorSelecionado != null) {
+			businessFornecedor.excluir(fornecedorSelecionado.getId());
+			fornecedorTable.setItems(updateTableFornecedor());
+			excluirFornecedorButton.setVisible(false);
 			editarFornecedorButton.setVisible(false);
-    	}
-    }
+		}
+	}
 
 	private void verificarAcesso(int Cargo) {
 		if(businessFuncionario.verificarAcesso(funcionario.getId_cargo())) {
@@ -317,7 +352,13 @@ public class IndexController implements Initializable{
 			relatoriosButton.setVisible(false);
 		}
 	}
-	
+
+	@FXML
+	void gerarHistorico(ActionEvent event) {
+		HistoricoController historico = new HistoricoController();
+		historico.gerarHistorico(new BusinessVenda().getList());
+	}
+
 	public void initTableVenda() {
 		idVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, Integer>("id"));
 		dataVendaClm.setCellValueFactory(new PropertyValueFactory<Venda, Date>("data_venda"));
@@ -344,8 +385,8 @@ public class IndexController implements Initializable{
 		DaoCliente daoCliente = new DaoCliente();
 		return FXCollections.observableArrayList(daoCliente.getList());
 	}
-	
-	
+
+
 	public void initTableProduto() {
 		idProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, Integer>("id"));
 		nomeProdutoClm.setCellValueFactory(new PropertyValueFactory<Produto, String>("descricao"));
@@ -374,7 +415,7 @@ public class IndexController implements Initializable{
 		DaoFuncionario daoFuncionario = new DaoFuncionario();
 		return FXCollections.observableArrayList(daoFuncionario.getList());
 	}
-	
+
 	public void initTableFornecedores() {
 		idFornecdorClm.setCellValueFactory(new PropertyValueFactory<Fornecedor, Integer>("id"));
 		empresaFornecdorClm.setCellValueFactory(new PropertyValueFactory<Fornecedor, String>("empresa"));

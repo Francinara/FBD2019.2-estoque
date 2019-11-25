@@ -67,5 +67,13 @@
       <TextArea fx:id="observacoesField" layoutX="457.0" layoutY="404.0" prefHeight="110.0" prefWidth="400.0" style="-fx-background-radius: 0;" />
       <Label layoutX="457.0" layoutY="387.0" text="Observações" />
       <Label fx:id="alertLabel" alignment="CENTER" layoutX="297.0" layoutY="558.0" prefHeight="33.0" prefWidth="286.0" style="-fx-border-color: #e80a0a;" styleClass="label_confim" text="" textAlignment="CENTER" textFill="#e80a0a" visible="false" />
+      <JFXButton layoutX="201.0" layoutY="132.0" onAction="#adicionarCargo" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00bf5c;" text="+" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

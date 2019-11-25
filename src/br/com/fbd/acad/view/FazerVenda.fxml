@@ -92,5 +92,13 @@
             <Font name="System Bold" size="34.0" />
          </font>
       </Label>
+      <JFXButton layoutX="759.0" layoutY="614.0" onAction="#gerarRecibo" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #00bf5c;" text="Gerar Recibo" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

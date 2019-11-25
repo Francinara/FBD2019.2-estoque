@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historico" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3c39cf04-9cc3-4680-961a-34506e21f9d6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="8"/>
+	<field name="data_venda" class="java.lang.String"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="funcionario" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="208" y="26" width="129" height="53" uuid="95387446-7da4-4c46-b6cd-9d5ab596dd12"/>
+				<textElement>
+					<font size="38"/>
+				</textElement>
+				<text><![CDATA[Vendas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="20" uuid="990dc83b-7cb5-4585-b407-c7d9fbd3ba41"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[data_venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="c35ce217-c69d-47e4-bb3d-d757f27e6972"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="b8380d4b-0986-45ec-9139-23ebd08820a5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[funcionario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="50131cd6-a74e-4c28-93a9-6327e9a1b25f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="138" height="20" uuid="93be6d44-9a06-4729-baa4-f992fb9e4901"/>
+				<textFieldExpression><![CDATA[$F{data_venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="20" uuid="23a350d8-031c-47df-bea8-16a0e2ab1864"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="20" uuid="76b64159-d0a9-46bb-8093-6035cd18cd6b"/>
+				<textFieldExpression><![CDATA[$F{funcionario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="20" uuid="5e3ff851-2b9b-4282-9c02-0615d094cb1f"/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -24,8 +24,8 @@
       <TextField fx:id="telefoneField" layoutX="26.0" layoutY="327.0" prefHeight="40.0" prefWidth="400.0" />
       <TextField fx:id="cpfField" layoutX="226.0" layoutY="396.0" prefHeight="40.0" prefWidth="198.0" />
       <Label layoutX="26.0" layoutY="310.0" text="Telefone* " />
-      <Label layoutX="26.0" layoutY="379.0" text="Data de Nascimento *" />
-      <Label layoutX="226.0" layoutY="379.0" text="CPF *" />
+      <Label layoutX="26.0" layoutY="379.0" text="Data de Nascimento " />
+      <Label layoutX="226.0" layoutY="379.0" text="CPF " />
       <Label layoutX="453.0" layoutY="176.0" text="Rua" />
       <TextField fx:id="ruaField" layoutX="453.0" layoutY="193.0" prefHeight="40.0" prefWidth="400.0" />
       <Text layoutX="453.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço">

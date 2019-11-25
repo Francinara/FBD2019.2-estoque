@@ -2,9 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -23,11 +20,14 @@
          <children>
             <Pane fx:id="relatorioPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="126.0" layoutY="169.0" text="Relatório">
+                  <JFXButton layoutX="350.0" layoutY="295.0" onAction="#gerarHistorico" prefHeight="40.0" prefWidth="211.0" style="-fx-background-color: #00bf5c;" text="Gerar Historico de Vendas" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                      <font>
-                        <Font size="77.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
-                  </Label>
+                  </JFXButton>
                </children>
             </Pane>
             <Pane fx:id="funcionarioPane" prefHeight="680.0" prefWidth="942.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -250,36 +250,11 @@
             </Pane>
             <Pane fx:id="painelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="30.0" layoutY="29.0" text="Nome Da empresa">
+                  <Label layoutX="319.0" layoutY="234.0" text="Bem-Vindo.">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="55.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="33.0" layoutY="117.0" prefHeight="195.0" prefWidth="832.0" style="-fx-background-color: #fff;">
-                     <children>
-                        <LineChart fx:id="lineChart" layoutY="14.0" prefHeight="183.0" prefWidth="814.0" title="Vendas">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </LineChart>
-                     </children>
-                     <effect>
-                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
-                     </effect>
-                  </Pane>
-                  <Pane layoutX="33.0" layoutY="366.0" prefHeight="195.0" prefWidth="381.0" style="-fx-background-color: #fff;">
-                     <effect>
-                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
-                     </effect>
-                  </Pane>
-                  <Pane layoutX="484.0" layoutY="366.0" prefHeight="195.0" prefWidth="381.0" style="-fx-background-color: #fff;">
-                     <effect>
-                        <DropShadow color="#a4a4a4" height="5.0" radius="2.0" width="5.0" />
-                     </effect>
-                  </Pane>
                </children>
             </Pane>
          </children></AnchorPane>

@@ -1,5 +1,6 @@
 package br.com.fbd.acad.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,11 +11,18 @@ import br.com.fbd.acad.business.IBusinessCargo;
 import br.com.fbd.acad.entidade.Cargo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class CadastrarCargoController implements Initializable{
+	
+	private static Stage stage;
 	
 	IBusinessCargo businessCargo = new BusinessCargo();
 
@@ -26,7 +34,7 @@ public class CadastrarCargoController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cancelarButton.setOnAction((ActionEvent event)->{
-			System.exit(0);
+	    	getStage().close();
 		});
 		salvarButton.setOnAction((ActionEvent event)->{
 			if(nomeField.getText().equalsIgnoreCase("")) {
@@ -41,8 +49,26 @@ public class CadastrarCargoController implements Initializable{
 			}
 			
 		});
+	}
+	
+	public void start(Stage stage) throws IOException {
+
+		Parent root = FXMLLoader.load(getClass().getResource("/br/com/fbd/acad/view/CadastrarCargo.fxml"));
+		Scene scene = new Scene(root);
+		stage.initStyle(StageStyle.UTILITY);
+		stage.setResizable(false);
+		stage.setScene(scene);
+		stage.show();
+		setStage(stage);
 		
-		
+	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
+	public static void setStage(Stage stage) {
+		CadastrarCargoController.stage = stage;
 	}
 
 }

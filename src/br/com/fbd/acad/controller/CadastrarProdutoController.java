@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -82,6 +83,10 @@ public class CadastrarProdutoController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		carregarCategorias();
 		carregarFornecedor();
+		
+		categoriaField.setOnMouseClicked((MouseEvent event)->{
+			carregarCategorias();
+		});
 
 	}
 
@@ -105,6 +110,15 @@ public class CadastrarProdutoController implements Initializable{
 	public static void setStage(Stage stage) {
 		CadastrarProdutoController.stage = stage;
 	}
+	
+	@FXML
+    void adicionarCategoria(ActionEvent event) {
+		try {
+			new CadastrarCategoriaController().start(new Stage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
 
 	public void carregarCategorias(){
 		IBusinessCategoria businessCategoria = new BusinessCategoria();

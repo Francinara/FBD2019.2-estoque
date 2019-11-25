@@ -71,7 +71,7 @@ public class FazerVendaController implements Initializable{
 	@FXML private TableColumn<Produto, Double> valorProdutoClm;
 
 	private double valor;
-	
+
 	private Produto produtoSelecionado;
 
 	@Override
@@ -99,7 +99,7 @@ public class FazerVendaController implements Initializable{
 			clearScream();
 			App.changeScreen("index", funcionario);
 		});
-		
+
 		produtoTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
 
 			@Override
@@ -107,18 +107,19 @@ public class FazerVendaController implements Initializable{
 				produtoSelecionado = (Produto)newValue;
 			}
 		});
-		
+
 		produtoTable.setOnKeyPressed((KeyEvent event)->{
 			System.out.println("entrei Viado");
 			if(event.getCode() == KeyCode.DELETE) {
 				if(produtoSelecionado != null) {
-		    		produtos.remove(produtoSelecionado);
-		    		produtoTable.setItems(updateTableProduto());
-		    	}
+					produtos.remove(produtoSelecionado);
+					produtoTable.setItems(updateTableProduto());
+				}
 			}
 		});
 
 	}
+
 
 	@FXML
 	void handleButtonAction(ActionEvent event) {
@@ -177,7 +178,7 @@ public class FazerVendaController implements Initializable{
 			}
 
 			produtoField.setItems(FXCollections.observableArrayList(businessListProduto));
-			
+
 			produtoField.getSelectionModel().clearSelection();
 			quantidadeField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 0));
 		}
@@ -191,7 +192,34 @@ public class FazerVendaController implements Initializable{
 			this.quantidadeField.setValueFactory(spinnerValueFactory);
 		}	
 	}
-	
+
+	@FXML
+	void gerarRecibo(ActionEvent event) {
+		if(clienteField.getSelectionModel().getSelectedItem() == null) {
+			alertLabel.setVisible(true);
+			alertLabel.setText("Adicione um cliente");
+		}else if(dataField.getValue() == null) {
+			alertLabel.setVisible(true);
+			alertLabel.setText("Adicione uma data");
+		}
+		else if(valor == 0){
+			alertLabel.setVisible(true);
+			alertLabel.setText("Valor invalido");
+
+		}
+		else {
+			Date date = Date.valueOf(dataField.getValue());
+			Venda venda = new Venda(businessVenda.maxId()+1, valor, date, funcionario.getId(),funcionario.getNome(), 
+					clienteField.getSelectionModel().getSelectedItem().getId(), 
+					clienteField.getSelectionModel().getSelectedItem().getNome());
+
+			List<Venda> vendas = new ArrayList<Venda>();
+			vendas.add(venda);
+			ReciboController relatorio = new ReciboController();
+			relatorio.gerarRecibo(vendas);
+		}
+	}
+
 	public void carregarFornecedor(){
 		IBusinessCliente businessCliente = new BusinessCliente();
 		clienteField.setItems(FXCollections.observableArrayList(businessCliente.getList()));
@@ -215,7 +243,7 @@ public class FazerVendaController implements Initializable{
 	public ObservableList<Produto> updateTableProduto(){
 		return FXCollections.observableArrayList(produtos);
 	}
-	
+
 	public void clearScream() {
 		clienteField.getSelectionModel().clearSelection();
 		produtoField.getSelectionModel().clearSelection();

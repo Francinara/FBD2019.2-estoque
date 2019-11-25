@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -17,18 +18,18 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <ComboBox fx:id="categoriaField" layoutX="29.0" layoutY="134.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
+      <ComboBox fx:id="categoriaField" layoutX="29.0" layoutY="134.0" prefHeight="40.0" prefWidth="344.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
       <Label layoutX="30.0" layoutY="186.0" text="Descrição*" />
       <TextField fx:id="nomeField" layoutX="30.0" layoutY="203.0" prefHeight="40.0" prefWidth="400.0" />
       <Label layoutX="30.0" layoutY="253.0" text="Código *" />
-      <TextField fx:id="codigoField" layoutX="30.0" layoutY="270.0" prefHeight="40.0" prefWidth="400.0" />
+      <TextField fx:id="codigoField" layoutX="30.0" layoutY="270.0" prefHeight="40.0" prefWidth="198.0" />
       <Label layoutX="29.0" layoutY="117.0" text="Categoria *" />
-      <Label layoutX="458.0" layoutY="117.0" text="Quantidade" />
+      <Label layoutX="458.0" layoutY="117.0" text="Quantidade*" />
       <TextField fx:id="quatidadeField" layoutX="458.0" layoutY="134.0" prefHeight="40.0" prefWidth="400.0" />
       <TextField fx:id="precoField" layoutX="459.0" layoutY="201.0" prefHeight="40.0" prefWidth="184.0" />
       <TextField fx:id="custoField" layoutX="659.0" layoutY="201.0" prefHeight="40.0" prefWidth="198.0" />
-      <Label layoutX="459.0" layoutY="184.0" text="Preço de venda" />
-      <Label layoutX="659.0" layoutY="184.0" text="Custo" />
+      <Label layoutX="459.0" layoutY="184.0" text="Preço de venda*" />
+      <Label layoutX="659.0" layoutY="184.0" text="Custo*" />
       <JFXButton fx:id="cancelarButton" layoutX="25.0" layoutY="419.0" onAction="#buttonHandler" prefHeight="40.0" prefWidth="184.0" style="-fx-background-color: #fff; -fx-border-color: #ccc; -fx-border-width: 1px;" text="Cancelar">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -49,6 +50,16 @@
       <Label layoutX="460.0" layoutY="248.0" text="Observações" />
       <Label fx:id="alertLabel" alignment="CENTER" layoutX="297.0" layoutY="423.0" prefHeight="33.0" prefWidth="286.0" style="-fx-border-color: #e80a0a;" styleClass="label_confim" text="" textAlignment="CENTER" textFill="#e80a0a" visible="false" />
       <ComboBox fx:id="fornecedorField" layoutX="30.0" layoutY="334.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;" />
-      <Label layoutX="30.0" layoutY="317.0" text="Fornecedor" />
+      <Label layoutX="30.0" layoutY="317.0" text="Fornecedor*" />
+      <JFXButton layoutX="390.0" layoutY="134.0" onAction="#adicionarCategoria" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00bf5c;" text="+" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="246.0" layoutY="253.0" text="Data*" />
+      <DatePicker fx:id="dataField" layoutX="246.0" layoutY="270.0" prefHeight="40.0" prefWidth="184.0" style="-fx-background-radius: 0;" stylesheets="@style.css" />
    </children>
 </AnchorPane>

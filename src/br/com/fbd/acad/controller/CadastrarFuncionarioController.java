@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -57,6 +58,11 @@ public class CadastrarFuncionarioController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		carregarCargos();
+		
+		cargoField.setOnMouseClicked((MouseEvent event)->{
+			carregarCargos();
+		});
+		
 	}
 	
 	public void start(Stage stage) throws IOException {
@@ -97,6 +103,15 @@ public class CadastrarFuncionarioController implements Initializable {
 				}
     		}
     	}
+    }
+	
+	@FXML
+    void adicionarCargo(ActionEvent event) {
+		try {
+			new CadastrarCargoController().start(new Stage());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 	
 	public void carregarCargos(){
